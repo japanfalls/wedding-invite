@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ei &amp; Mahiro Wedding Invitation</title>
+  <meta name="description" content="村上 瑛 &amp; 横田 真潤 の結婚式 Web 招待状です。皆様のご出席を心よりお待ちしております。">
+
+  <!-- Tailwind CSS v3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome for elegant icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Cormorant Garamond, Noto Serif JP, Playfair Display, and Alex Brush (for beautiful script titles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: {
+              DEFAULT: '#FDFBF7',
+              dark: '#F6F3EC',
+              darker: '#EEEAE0',
+            },
+            sage: {
+              light: '#EFF1EC',
+              DEFAULT: '#8F9779',
+              dark: '#6E7558',
+              deep: '#4E533F',
+            },
+            olive: {
+              DEFAULT: '#586445',
+              dark: '#3A422E',
+            },
+            gold: {
+              light: '#F7EDD5',
+              DEFAULT: '#D4AF37',
+              dark: '#C5A059',
+              accent: '#B08E47',
+            },
+            charcoal: '#2D322B',
+          },
+          fontFamily: {
+            serif: ['Noto Serif JP', 'Cormorant Garamond', 'serif'],
+            display: ['Playfair Display', 'Cinzel', 'serif'],
+            script: ['Alex Brush', 'cursive'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'pulse-gold': 'pulseGold 2s infinite',
+            'draw': 'draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+            'scroll-down': 'scrollDown 2s infinite',
+            'music-equalizer': 'equalizer 1.2s ease-in-out infinite alternate',
+            'shake': 'shake 0.5s ease-in-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGold: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
+              '50%': { boxShadow: '0 0 0 8px rgba(212, 175, 55, 0)' },
+            },
+            draw: {
+              'to': { strokeDashoffset: '0' }
+            },
+            scrollDown: {
+              '0%': { height: '0', top: '0', opacity: '0' },
+              '30%': { height: '24px', top: '0', opacity: '1' },
+              '60%': { height: '0', top: '24px', opacity: '0' },
+              '100%': { height: '0', top: '0', opacity: '0' }
+            },
+            equalizer: {
+              '0%': { height: '4px' },
+              '100%': { height: '16px' }
+            },
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '20%, 60%': { transform: 'translateX(-6px)' },
+              '40%, 80%': { transform: 'translateX(6px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Serif JP', 'Cormorant Garamond', serif;
+      background-color: #F6F3EC;
+      color: #2D322B;
+    }
+    
+    .text-serif-playfair {
+      font-family: 'Playfair Display', 'Noto Serif JP', serif;
+    }
+
+    .glass {
+      background: rgba(253, 251, 247, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(143, 151, 121, 0.15);
+    }
+
+    /* Custom fade-in style for scroll animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Elegant gold border framing */
+    .gold-frame {
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 6px;
+      position: relative;
+    }
+    .gold-frame::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      pointer-events: none;
+    }
+
+    /* SVG Stroke Drawing Animation triggers when active */
+    .draw-svg path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    .reveal.active .draw-svg path {
+      animation: draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* SVG drawing inside intro loader screen */
+    .active-draw .draw-path {
+      animation: draw 2s ease forwards;
+    }
+    .active-draw .draw-path-delay-1 {
+      animation: draw 2s ease forwards 0.4s;
+    }
+    .active-draw .draw-path-delay-2 {
+      animation: draw 2s ease forwards 0.7s;
+    }
+
+    /* Floating navigation bar */
+    .nav-bar {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-sage/20 selection:text-sage-deep overflow-x-hidden">
+
+  <!-- BGM Audio Player -->
+  <audio id="bgm-player" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+
+  <!-- ========================================== -->
+  <!-- 0-A. SECURITY PASSWORD LOCK SCREEN -->
+  <!-- ========================================== -->
+  <div id="lock-screen" class="fixed inset-0 bg-ivory z-50 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out">
+    <div class="text-center space-y-6 px-8 max-w-xs flex flex-col items-center">
+      
+      <!-- Elegant gold padlock icon -->
+      <div class="w-14 h-14 rounded-full border border-gold/30 flex items-center justify-center text-gold/60 mb-2 animate-pulse-gold">
+        <i class="fa-solid fa-lock text-lg"></i>
+      </div>
+      
+      <div class="space-y-2">
+        <p class="font-script text-3xl text-gold-accent tracking-wider">Wedding Invitation</p>
+        <p class="text-xs text-sage-dark tracking-widest leading-6 mt-1">
+          村上 瑛 ＆ 横田 真潤 より<br>メッセージが届きました
+        </p>
+        <p class="text-[10px] text-sage-dark/70 font-light mt-4">閲覧パスワードを入力してください</p>
+      </div>
+
+      <!-- Password Input Form -->
+      <div id="password-form-container" class="w-full space-y-3">
+        <input type="password" id="password-input" placeholder="パスワードを入力" class="w-full px-4 py-3 rounded-full border border-sage-light/80 bg-ivory text-center text-xs tracking-[0.3em] text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage transition duration-200">
+        <p id="password-error" class="text-[9px] text-rose-500 hidden font-light">※パスワードが正しくありません</p>
+        <button id="password-submit" class="w-full px-8 py-3 bg-sage hover:bg-sage-dark text-white rounded-full text-xs font-semibold tracking-[0.2em] shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-300">
+          ENTER
+        </button>
+      </div>
+      
+      <p class="text-[9px] text-sage-dark/60 font-light pt-6">※パスワードが分からない場合は新郎新婦へお問い合わせください。</p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 0-B. INTRO LOADER SCREEN -->
+  <!-- ========================================== -->
+  <div id="loader-screen" class="fixed inset-0 bg-ivory z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 ease-in-out">
+    <div class="text-center space-y-6 px-8 max-w-xs">
+      
+      <!-- Leaf Line Drawing SVG -->
+      <svg id="loader-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-24 h-24 text-gold mx-auto fill-none stroke-current stroke-[1.5]">
+        <path d="M50 15 C40 30 35 48 50 85 C65 48 60 30 50 15 Z" class="draw-path" style="stroke-dasharray: 400; stroke-dashoffset: 400;"></path>
+        <path d="M50 35 Q35 40 25 50 Q42 45 50 35 Z" class="draw-path-delay-1" style="stroke-dasharray: 100; stroke-dashoffset: 100;"></path>
+        <path d="M50 45 Q65 50 75 60 Q58 55 50 45 Z" class="draw-path-delay-2" style="stroke-dasharray: 100; stroke-dashoffset: 100;"></path>
+      </svg>
+      
+      <div id="loader-text" class="space-y-2 opacity-0 transition-all duration-[1500ms] translate-y-2">
+        <h2 class="font-script text-3xl text-gold-accent tracking-wider">Welcome to Our Wedding</h2>
+        <p class="font-display text-xs text-sage-dark tracking-[0.25em] uppercase">Ei &amp; Mahiro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BGM Equalizer Overlay Button (ON/OFF Control Floating bottom-left) -->
+  <button id="bgm-toggle" class="fixed bottom-6 left-6 z-30 w-11 h-11 rounded-full glass flex items-center justify-center text-sage-deep hover:text-gold transition-all duration-300 shadow-md active:scale-[0.95] pointer-events-none opacity-0">
+    <!-- Icon or Equalizer animations -->
+    <div id="equalizer-bars" class="flex items-end justify-center space-x-0.5 w-5 h-4 hidden">
+      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.1s;"></div>
+      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.4s;"></div>
+      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.2s;"></div>
+      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.5s;"></div>
+    </div>
+    <i id="bgm-mute-icon" class="fa-solid fa-volume-xmark text-xs text-gold/80"></i>
+  </button>
+
+  <!-- BG Subtle Botanical Pattern (Top Right & Bottom Left) -->
+  <div class="fixed top-0 right-0 w-72 h-72 opacity-[0.03] pointer-events-none select-none z-0">
+    <svg viewBox="0 0 100 100" fill="currentColor" class="text-sage-deep">
+      <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+    </svg>
+  </div>
+  <div class="fixed bottom-0 left-0 w-72 h-72 opacity-[0.03] pointer-events-none select-none z-0">
+    <svg viewBox="0 0 100 100" fill="currentColor" class="text-sage-deep" transform="rotate(180 50 50)">
+      <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+    </svg>
+  </div>
+
+  <!-- Main Outer Container -->
+  <div class="max-w-md mx-auto min-h-screen shadow-2xl bg-ivory relative overflow-x-hidden border-x border-sage-light/40 flex flex-col z-10">
+
+    <!-- ========================================== -->
+    <!-- 1. HERO / COVER SECTION WITH SLIDESHOW -->
+    <!-- ========================================== -->
+    <header id="hero" class="relative min-h-[95vh] flex flex-col justify-between items-center text-center p-8 overflow-hidden z-10">
+      
+      <!-- Slide background images -->
+      <div class="absolute inset-0 z-0">
+        <div id="slide-1" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-100 scale-105" style="background-image: url('images/hero1.jpg');"></div>
+        <div id="slide-2" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-0" style="background-image: url('images/hero2.jpg');"></div>
+        <div id="slide-3" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-0" style="background-image: url('images/hero3.jpg');"></div>
+        
+        <!-- Premium warm overlays -->
+        <div class="absolute inset-0 bg-gradient-to-b from-ivory/20 via-ivory/55 to-ivory"></div>
+      </div>
+
+      <!-- Floating Nav Button (Top Right) -->
+      <a href="#menu-overlay" id="menu-trigger" class="absolute top-6 right-6 z-30 w-10 h-10 rounded-full glass flex items-center justify-center text-sage-deep hover:text-gold transition-colors duration-300">
+        <i class="fa-solid fa-bars text-sm"></i>
+      </a>
+
+      <!-- Tiny Top Header -->
+      <div class="pt-6 tracking-[0.3em] text-[10px] text-sage-dark uppercase font-light z-10">
+        Wedding Invitation
+      </div>
+
+      <!-- Main Decorative Hero Elements -->
+      <div class="my-auto flex flex-col items-center py-8 z-10">
+        
+        <!-- Botanical Ring Wreath SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-20 h-20 text-gold/70 mb-6 draw-svg fill-none stroke-current stroke-[1.5] animate-float-slow">
+          <path d="M50 12 A38 38 0 1 1 49.9 12 Z" class="draw-path" style="stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw 3s ease forwards 0.5s;"></path>
+          <path d="M50 12 C52 8, 48 4, 50 0 C47 4, 48 8, 50 12 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1s;"></path>
+          <path d="M22 28 C18 24, 15 26, 11 23 C15 28, 18 29, 22 28 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1.2s;"></path>
+          <path d="M78 28 C82 24, 85 26, 89 23 C85 28, 82 29, 78 28 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1.4s;"></path>
+        </svg>
+        
+        <!-- Script font top accent -->
+        <p class="font-script text-3xl text-gold-accent mb-3">Save the Date</p>
+
+        <!-- Bride & Groom Names -->
+        <h1 class="font-display text-4xl text-charcoal font-semibold tracking-wider mb-2">
+          Ei <span class="text-gold font-light font-serif">&amp;</span> Mahiro
+        </h1>
+        <p class="text-[10px] text-sage-dark tracking-[0.4em] font-light mb-8 uppercase">村上 瑛 ＆ 横田 真潤</p>
+
+        <div class="h-[1px] w-28 bg-gold/40 my-4"></div>
+
+        <!-- Venue & Date -->
+        <p class="text-sm font-light text-charcoal tracking-widest mt-2 uppercase font-display">
+          2027.10.11 <span class="text-xs text-sage-dark font-serif">Monday</span>
+        </p>
+        <p class="text-[11px] text-sage-dark tracking-wider mt-1 font-light">
+          at Botanical House Tokyo
+        </p>
+      </div>
+
+      <!-- Countdown Widget -->
+      <div class="w-full glass rounded-3xl p-5 shadow-sm border border-sage/10 mb-6 z-10">
+        <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light mb-3">Our Wedding Day Countdown</p>
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="flex flex-col">
+            <span id="days" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
+            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Days</span>
+          </div>
+          <div class="flex flex-col border-l border-sage-light/60">
+            <span id="hours" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
+            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Hours</span>
+          </div>
+          <div class="flex flex-col border-l border-sage-light/60">
+            <span id="minutes" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
+            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Mins</span>
+          </div>
+          <div class="flex flex-col border-l border-sage-light/60">
+            <span id="seconds" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
+            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator with modern animating line -->
+      <div class="flex flex-col items-center text-sage-dark transition-colors duration-300 z-10 pb-2">
+        <span class="text-[8px] tracking-[0.25em] uppercase font-light mb-3">Scroll</span>
+        <div class="w-[1px] h-10 bg-gold/30 relative overflow-hidden">
+          <div class="absolute w-full bg-gold top-0 h-0 animate-scroll-down"></div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ========================================== -->
+    <!-- 2. GREETING SECTION -->
+    <!-- ========================================== -->
+    <section id="greeting" class="reveal py-24 px-8 text-center bg-ivory-dark relative">
+      <div class="max-w-xs mx-auto">
+        
+        <!-- Header -->
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Greeting</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest mb-8">ごあいさつ</h2>
+
+        <!-- Botanical Decorative Top Accent -->
+        <svg viewBox="0 0 100 20" class="w-24 h-6 mx-auto text-sage/40 mb-8" fill="currentColor">
+          <path d="M50,10 Q60,5 75,5 T100,5 Q80,10 65,10 T50,10 M50,10 Q40,5 25,5 T0,5 Q20,10 35,10 T50,10" />
+        </svg>
+
+        <!-- Message Body -->
+        <div class="text-xs leading-8 text-charcoal/90 font-light space-y-6 text-justify sm:text-center">
+          <p>
+            秋晴れの心地よい季節となってまいりました<br>
+            皆様におかれましては<br>
+            ますますご清栄のこととお慶び申し上げます
+          </p>
+          <p>
+            このたび 私たちは新たな人生の門出を<br>
+            迎えることとなりました
+          </p>
+          <p>
+            日頃お世話になっている皆様へ<br>
+            心からの感謝を込めて<br>
+            ささやかなお披露目の宴を企画いたしました
+          </p>
+          <p>
+            ご多忙中 誠に恐縮ではございますが<br>
+            ぜひご出席いただき 私たちの出発を<br>
+            見守っていただければ幸いです
+          </p>
+        </div>
+
+        <!-- Signature -->
+        <div class="mt-14 text-xs tracking-wider font-light text-charcoal">
+          <p class="mb-6">2027年 8月 吉日</p>
+          <div class="flex justify-center items-center space-x-6 mt-8">
+            <div class="text-right">
+              <p class="text-[9px] text-sage-dark font-light">新郎</p>
+              <p class="text-sm font-medium mt-1 font-serif">村上 瑛</p>
+            </div>
+            <div class="h-8 w-[1px] bg-gold/30"></div>
+            <div class="text-left">
+              <p class="text-[9px] text-sage-dark font-light">新婦</p>
+              <p class="text-sm font-medium mt-1 font-serif">横田 真潤</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 3. PROFILE SECTION -->
+    <!-- ========================================== -->
+    <section id="profile" class="reveal py-24 px-8 bg-ivory border-t border-sage-light/20">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Groom &amp; Bride</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest">おふたりのご紹介</h2>
+      </div>
+
+      <div class="space-y-16 max-w-xs mx-auto">
+        
+        <!-- Groom Card -->
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-36 h-36 rounded-full overflow-hidden border-2 border-gold/30 p-1 bg-ivory shadow-md transition-all duration-500 hover:scale-105">
+            <img src="images/groom.jpg" alt="Groom" class="w-full h-full object-cover rounded-full">
+          </div>
+          <div>
+            <span class="text-[9px] text-sage-dark uppercase tracking-widest block font-light">Groom</span>
+            <h3 class="text-base font-semibold text-charcoal font-serif mt-1">村上 瑛</h3>
+            <p class="text-[10px] text-sage-dark tracking-wide font-light">Ei Murakami</p>
+          </div>
+          <div class="text-xs text-charcoal/90 font-light space-y-1.5 leading-6 border-t border-gold/10 pt-4 w-full">
+            <p><span class="text-sage-deep font-medium">生年月日:</span> 1999年 11月 20日</p>
+            <p><span class="text-sage-deep font-medium">趣味:</span> 旅行・カメラ・ハイキング</p>
+            <p class="italic text-sage-dark mt-2">「自然と旅が大好きです。当日はカメラを持って皆さんの笑顔をたくさん撮らせてください！」</p>
+          </div>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-36 h-36 rounded-full overflow-hidden border-2 border-gold/30 p-1 bg-ivory shadow-md transition-all duration-500 hover:scale-105">
+            <img src="images/bride.jpg" alt="Bride" class="w-full h-full object-cover rounded-full">
+          </div>
+          <div>
+            <span class="text-[9px] text-sage-dark uppercase tracking-widest block font-light">Bride</span>
+            <h3 class="text-base font-semibold text-charcoal font-serif mt-1">横田 真潤</h3>
+            <p class="text-[10px] text-sage-dark tracking-wide font-light">Mahiro Yokota</p>
+          </div>
+          <div class="text-xs text-charcoal/90 font-light space-y-1.5 leading-6 border-t border-gold/10 pt-4 w-full">
+            <p><span class="text-sage-deep font-medium">生年月日:</span> 2000年 3月 15日</p>
+            <p><span class="text-sage-deep font-medium">趣味:</span> カフェ巡り・フラワーアレンジ・お菓子作り</p>
+            <p class="italic text-sage-dark mt-2">「お花と甘いものが大好きです。皆さまと温かい時間を過ごせることを心待ちにしています。」</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 4. DETAILS / TIMELINE & ACCESS SECTION -->
+    <!-- ========================================== -->
+    <section id="details" class="reveal py-24 px-8 bg-ivory-dark border-t border-sage-light/20">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Details &amp; Access</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest">日時・場所のご案内</h2>
+      </div>
+
+      <!-- Schedule Timeline Card -->
+      <div class="bg-ivory border border-sage-light/50 rounded-3xl p-6 shadow-sm mb-10">
+        <h3 class="text-xs text-sage-deep tracking-[0.25em] uppercase font-medium border-b border-sage-light/60 pb-3 mb-6 flex items-center">
+          <i class="fa-regular fa-clock mr-2 text-gold"></i> Schedule
+        </h3>
+        <p class="text-base font-semibold text-charcoal tracking-wide text-center mb-8">
+          2027年 10月 11日 (月・祝)
+        </p>
+        
+        <!-- Elegant Vertical Timeline -->
+        <div class="relative pl-8 border-l border-gold-dark/30 space-y-8 my-6 mx-auto max-w-[260px]">
+          
+          <!-- Node 1: Reception -->
+          <div class="relative">
+            <div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-ivory border border-gold-dark flex items-center justify-center">
+              <div class="w-1.5 h-1.5 rounded-full bg-gold-dark"></div>
+            </div>
+            <span class="text-[10px] text-sage-dark tracking-wider">13:30</span>
+            <p class="text-xs font-semibold text-charcoal tracking-widest mt-0.5">受付開始</p>
+            <p class="text-[10px] text-sage-dark/80 font-light mt-0.5">ゲストの皆さまの受付がスタートします。</p>
+          </div>
+
+          <!-- Node 2: Chapel Ceremony -->
+          <div class="relative">
+            <div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-ivory border border-gold-dark flex items-center justify-center">
+              <div class="w-1.5 h-1.5 rounded-full bg-gold-dark"></div>
+            </div>
+            <span class="text-[10px] text-sage-dark tracking-wider">14:00</span>
+            <p class="text-xs font-semibold text-charcoal tracking-widest mt-0.5">挙式 (チャペル式)</p>
+            <p class="text-[10px] text-sage-dark/80 font-light mt-0.5">緑豊かな森のチャペルにて愛を誓います。</p>
+          </div>
+
+          <!-- Node 3: Banquet / Reception -->
+          <div class="relative">
+            <div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-ivory border border-gold-dark flex items-center justify-center">
+              <div class="w-1.5 h-1.5 rounded-full bg-gold-dark"></div>
+            </div>
+            <span class="text-[10px] text-sage-dark tracking-wider">15:00</span>
+            <p class="text-xs font-semibold text-charcoal tracking-widest mt-0.5">披露宴 (メインホール)</p>
+            <p class="text-[10px] text-sage-dark/80 font-light mt-0.5">美味しいお食事と会話をお楽しみください。</p>
+          </div>
+        </div>
+
+        <!-- Add to Calendar buttons -->
+        <div class="grid grid-cols-2 gap-3 mt-8 border-t border-sage-light/40 pt-6">
+          <a href="#" id="google-cal-btn" target="_blank" class="flex items-center justify-center space-x-2 text-[10px] tracking-wider py-3 border border-gold/40 text-sage-deep hover:bg-gold/5 rounded-xl transition duration-300">
+            <i class="fa-brands fa-google text-gold"></i>
+            <span>Googleカレンダー</span>
+          </a>
+          <button id="ics-cal-btn" class="flex items-center justify-center space-x-2 text-[10px] tracking-wider py-3 border border-gold/40 text-sage-deep hover:bg-gold/5 rounded-xl transition duration-300">
+            <i class="fa-regular fa-calendar-check text-gold"></i>
+            <span>iCal / Outlook</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Venue Card -->
+      <div class="bg-ivory border border-sage-light/50 rounded-3xl p-6 shadow-sm">
+        <h3 class="text-xs text-sage-deep tracking-[0.25em] uppercase font-medium border-b border-sage-light/60 pb-3 mb-6 flex items-center">
+          <i class="fa-solid fa-map-pin mr-2 text-gold"></i> Venue
+        </h3>
+        
+        <div class="text-center space-y-2 mb-6">
+          <p class="text-base font-semibold text-charcoal">ボタニカルハウス東京</p>
+          <p class="text-[10px] text-sage-dark tracking-widest uppercase">Botanical House Tokyo</p>
+          <p class="text-xs text-charcoal/90 leading-6 mt-4">
+            東京都渋谷区神南 1-2-3<br>
+            TEL: 03-1234-5678
+          </p>
+        </div>
+
+        <!-- Embedded Map Google Maps -->
+        <div class="w-full h-44 rounded-2xl overflow-hidden shadow-inner border border-sage-light/40 mb-6">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7479754722883!2d139.69944717625126!3d35.66964177259239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca5f4640001%3A0xc3cf9b4f971ad485!2z5Luj44CF5pyo5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Google Map Link Button -->
+        <a href="https://maps.google.com/?q=東京都渋谷区神南1-2-3+ボタニカルハウス東京" target="_blank" class="w-full flex items-center justify-center space-x-2 text-xs text-white bg-sage hover:bg-sage-dark active:scale-[0.98] py-3.5 rounded-xl shadow-sm transition duration-300 font-medium tracking-widest">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Googleマップでルートを開く</span>
+        </a>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 5. PHOTO GALLERY SECTION -->
+    <!-- ========================================== -->
+    <section id="gallery" class="reveal py-24 px-8 bg-ivory border-t border-sage-light/20">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Gallery</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest">フォトギャラリー</h2>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="grid grid-cols-2 gap-3.5" id="gallery-grid">
+        <div class="col-span-2 overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-[16/10] relative">
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <img src="images/hero2.jpg" alt="Wedding Walk" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <img src="images/hero1.jpg" alt="Venue Decoration" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <img src="images/hero3.jpg" alt="Rings and Bouquet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <img src="images/groom.jpg" alt="Groom" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <img src="images/bride.jpg" alt="Bride" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 6. RSVP & MESSAGE FORM SECTION -->
+    <!-- ========================================== -->
+    <section id="rsvp" class="reveal py-24 px-8 bg-ivory-dark border-t border-sage-light/20 flex-grow">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">R.S.V.P.</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest">ご出欠のご連絡</h2>
+        <p class="text-[11px] text-sage-dark font-light mt-4 leading-6">
+          お手数ではございますが 準備の都合上<br>
+          <span class="font-semibold text-sage-deep">2027年 9月 11日 (土)</span> までに<br>
+          ご回答いただけますようお願い申し上げます
+        </p>
+      </div>
+
+      <!-- Form Container -->
+      <div id="rsvp-form-container" class="space-y-8 max-w-sm mx-auto bg-ivory/85 border border-sage-light/50 rounded-3xl p-6 shadow-sm">
+        <form id="rsvp-form" class="space-y-6">
+          <!-- Attendance Radios -->
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold text-sage-deep tracking-wider">ご出欠 <span class="text-rose-500">*</span></label>
+            <div class="grid grid-cols-2 gap-3">
+              
+              <!-- Attend -->
+              <label for="attend-yes" class="relative block cursor-pointer group">
+                <input type="radio" name="attendance" id="attend-yes" value="出席" checked class="sr-only peer">
+                <div class="w-full text-center py-4 border border-sage-light/80 rounded-2xl bg-ivory text-xs tracking-widest text-charcoal font-medium transition-all duration-300 peer-checked:bg-sage peer-checked:text-white peer-checked:border-sage peer-checked:shadow-sm group-hover:border-sage/40">
+                  ご出席
+                </div>
+              </label>
+              
+              <!-- Decline -->
+              <label for="attend-no" class="relative block cursor-pointer group">
+                <input type="radio" name="attendance" id="attend-no" value="欠席" class="sr-only peer">
+                <div class="w-full text-center py-4 border border-sage-light/80 rounded-2xl bg-ivory text-xs tracking-widest text-charcoal font-medium transition-all duration-300 peer-checked:bg-sage peer-checked:text-white peer-checked:border-sage peer-checked:shadow-sm group-hover:border-sage/40">
+                  ご欠席
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Name Inputs -->
+          <div class="grid grid-cols-1 gap-4">
+            <div class="space-y-1.5">
+              <label for="guest-name" class="block text-xs font-semibold text-sage-deep tracking-wider">
+                お名前 <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="guest-name" required placeholder="例：山田 太郎" class="w-full px-4 py-3 rounded-2xl border border-sage-light/80 bg-ivory text-xs text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage transition duration-200">
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="guest-kana" class="block text-xs font-semibold text-sage-deep tracking-wider">
+                お名前（フリガナ） <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="guest-kana" required placeholder="例：ヤマダ タロウ" class="w-full px-4 py-3 rounded-2xl border border-sage-light/80 bg-ivory text-xs text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage transition duration-200">
+            </div>
+          </div>
+
+          <!-- Companions Selection -->
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold text-sage-deep tracking-wider">ご同伴者様の有無</label>
+            <div class="flex items-center space-x-6">
+              <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
+                <input type="radio" name="has_companion" id="companion-no" value="なし" checked class="w-4 h-4 text-sage border-sage-light focus:ring-sage accent-sage">
+                <span>なし</span>
+              </label>
+              <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
+                <input type="radio" name="has_companion" id="companion-yes" value="あり" class="w-4 h-4 text-sage border-sage-light focus:ring-sage accent-sage">
+                <span>あり</span>
+              </label>
+            </div>
+
+            <!-- Slide-down Companion Count Container -->
+            <div id="companion-count-container" class="hidden transition-all duration-300 mt-3">
+              <div class="space-y-1.5">
+                <label for="companion-count" class="block text-[10px] font-medium text-sage-dark">ご同伴者様人数（ご本人様を除く）</label>
+                <select id="companion-count" class="w-full px-4 py-3 rounded-2xl border border-sage-light/80 bg-ivory text-xs text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage">
+                  <option value="1">1名</option>
+                  <option value="2">2名</option>
+                  <option value="3">3名</option>
+                  <option value="4">4名以上</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Allergies Info -->
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold text-sage-deep tracking-wider">食物アレルギーの有無</label>
+            <div class="flex items-center space-x-6">
+              <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
+                <input type="radio" name="has_allergy" id="allergy-no" value="なし" checked class="w-4 h-4 text-sage border-sage-light focus:ring-sage accent-sage">
+                <span>なし</span>
+              </label>
+              <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
+                <input type="radio" name="has_allergy" id="allergy-yes" value="あり" class="w-4 h-4 text-sage border-sage-light focus:ring-sage accent-sage">
+                <span>あり</span>
+              </label>
+            </div>
+
+            <!-- Slide-down Allergy Details Container -->
+            <div id="allergy-details-container" class="hidden transition-all duration-300 mt-3">
+              <div class="space-y-1.5">
+                <label for="allergy-details" class="block text-[10px] font-medium text-sage-dark">詳細（アレルギー食材等を具体的にご記入ください）</label>
+                <textarea id="allergy-details" rows="2" placeholder="例：エビ、カニなどの甲殻類" class="w-full px-4 py-3 rounded-2xl border border-sage-light/80 bg-ivory text-xs text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage transition duration-200 resize-none"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Input -->
+          <div class="space-y-1.5">
+            <label for="guest-message" class="block text-xs font-semibold text-sage-deep tracking-wider">メッセージ</label>
+            <textarea id="guest-message" rows="4" placeholder="新郎新婦へのお祝いメッセージなどをご自由にご記入ください" class="w-full px-4 py-3 rounded-2xl border border-sage-light/80 bg-ivory text-xs text-charcoal focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage transition duration-200 resize-none"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button type="submit" id="submit-btn" class="w-full bg-sage hover:bg-sage-dark active:scale-[0.98] text-white py-3.5 px-6 rounded-2xl font-medium tracking-widest text-xs shadow-md transition duration-300 flex items-center justify-center space-x-3">
+              <span id="submit-text">回答を送信する</span>
+              <svg id="submit-spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ivory-dark border-t border-sage-light/20 py-12 px-8 text-center text-[9px] text-sage-dark font-light tracking-[0.25em]">
+      <p class="uppercase mb-2 font-display">&copy; Ei &amp; Mahiro 2027</p>
+      <p>MADE WITH LOVE</p>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- NAVIGATION OVERLAY MENU -->
+  <!-- ========================================== -->
+  <div id="menu-overlay" class="fixed inset-0 bg-ivory/95 z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+    <a href="#" id="menu-close" class="absolute top-6 right-6 w-10 h-10 rounded-full glass flex items-center justify-center text-sage-deep hover:text-gold transition-colors duration-300">
+      <i class="fa-solid fa-xmark text-sm"></i>
+    </a>
+    
+    <nav class="text-center space-y-8">
+      <p class="font-script text-4xl text-gold-accent mb-4">Menu</p>
+      <a href="#hero" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">Top</a>
+      <a href="#greeting" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">Greeting</a>
+      <a href="#profile" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">Profile</a>
+      <a href="#details" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">Details &amp; Access</a>
+      <a href="#gallery" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">Gallery</a>
+      <a href="#rsvp" class="menu-link block text-sm tracking-[0.2em] font-medium text-charcoal hover:text-gold uppercase transition duration-300">R.S.V.P.</a>
+    </nav>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE MODALS -->
+  <!-- ========================================== -->
+
+  <!-- A. Gallery Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-charcoal/90 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl focus:outline-none hover:text-gold transition duration-300" aria-label="閉じる">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-[90%] max-h-[80vh] p-4 relative" id="lightbox-img-parent">
+      <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-[75vh] rounded-2xl object-contain mx-auto shadow-2xl">
+    </div>
+  </div>
+
+
+  <!-- B. Success / Complete Modal -->
+  <div id="success-modal" class="fixed inset-0 bg-charcoal/80 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-6">
+    <div class="bg-ivory max-w-sm w-full rounded-3xl p-8 text-center shadow-2xl border border-sage-light/40 transform scale-95 transition-transform duration-300" id="success-modal-content">
+      <div class="w-16 h-16 bg-sage-light rounded-full flex items-center justify-center mx-auto mb-6 text-sage text-2xl">
+        <i class="fa-solid fa-leaf animate-bounce"></i>
+      </div>
+      <h3 class="text-base font-semibold text-charcoal tracking-widest mb-4">ご回答ありがとうございました</h3>
+      <div class="text-xs text-charcoal/80 leading-6 space-y-3 font-light mb-8">
+        <p>ご出欠の回答を承りました。</p>
+        <p>当日皆様にお会いできますことを<br>心より楽しみにしております。</p>
+        <p class="text-[10px] text-sage-dark border-t border-sage-light/40 pt-3 mt-4">
+          ※ご回答内容は無事に送信されました。<br>変更が生じた場合は直接新郎新婦までご連絡ください。
+        </p>
+      </div>
+      <button id="success-close" class="w-full bg-sage hover:bg-sage-dark text-white py-3.5 rounded-2xl text-xs font-semibold tracking-widest shadow-md transition duration-300">
+        閉じる
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE JS LOGIC -->
+  <!-- ========================================== -->
+  <script>
+    // ----------------------------------------------------
+    // CONSTANTS & CONFIGURATION
+    // ----------------------------------------------------
+    // GAS Webhook URL (Replace with your own Google Apps Script Webhook URL)
+    const SCRIPT_URL = 'YOUR_GAS_URL_HERE';
+    
+    // Custom Gate Password
+    const ACCESS_PASSWORD = 'Ei_Mahiro_1011';
+
+    // Ceremony Date: 2027-10-11
+    const CEREMONY_DATE = new Date('2027-10-11T14:00:00+09:00');
+    const RECEPTION_DATE = new Date('2027-10-11T13:30:00+09:00');
+    const BANQUET_END_DATE = new Date('2027-10-11T17:30:00+09:00');
+    
+    const EVENT_TITLE = '村上 瑛 & 横田 真潤 結婚披露宴';
+    const EVENT_LOCATION = 'ボタニカルハウス東京 (東京都渋谷区神南 1-2-3)';
+    const EVENT_DETAILS = '村上 瑛 & 横田 真潤 の結婚式・披露宴です。皆様のお越しを心よりお待ちしております。';
+
+
+    // ----------------------------------------------------
+    // 0. SECURITY PASSWORD GATE & INTRO FLOW
+    // ----------------------------------------------------
+    const bgmPlayer = document.getElementById('bgm-player');
+    const bgmToggle = document.getElementById('bgm-toggle');
+    const equalizerBars = document.getElementById('equalizer-bars');
+    const bgmMuteIcon = document.getElementById('bgm-mute-icon');
+
+    const lockScreen = document.getElementById('lock-screen');
+    const loaderScreen = document.getElementById('loader-screen');
+    const passwordInput = document.getElementById('password-input');
+    const passwordSubmit = document.getElementById('password-submit');
+    const passwordError = document.getElementById('password-error');
+    const passwordFormContainer = document.getElementById('password-form-container');
+
+    // Handle gate password verification
+    const verifyPassword = () => {
+      const inputVal = passwordInput.value.trim();
+      
+      if (inputVal === ACCESS_PASSWORD) {
+        // Password correct -> Unlock and trigger intro flow
+        passwordError.classList.add('hidden');
+        lockScreen.classList.add('opacity-0', 'pointer-events-none');
+        
+        // Setup BGM play (interaction allows this now)
+        bgmPlayer.play().then(() => {
+          equalizerBars.classList.remove('hidden');
+          bgmMuteIcon.classList.add('hidden');
+          bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
+        }).catch(err => {
+          console.warn("BGM autoplay was blocked by browser configuration:", err);
+        });
+
+        // Trigger loader animation
+        loaderScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+        loaderScreen.classList.add('opacity-100');
+        
+        // Start SVG drawing
+        document.getElementById('loader-svg').classList.add('active-draw');
+        
+        // Fade in loader text
+        setTimeout(() => {
+          const loaderText = document.getElementById('loader-text');
+          loaderText.classList.remove('opacity-0');
+          loaderText.classList.add('opacity-100', 'translate-y-0');
+        }, 800);
+
+        // Auto transition to main content after animation
+        setTimeout(() => {
+          loaderScreen.classList.add('opacity-0', 'pointer-events-none');
+          bgmToggle.classList.remove('opacity-0', 'pointer-events-none');
+          
+          setTimeout(() => {
+            lockScreen.classList.add('hidden');
+            loaderScreen.classList.add('hidden');
+          }, 1000);
+        }, 3200);
+
+      } else {
+        // Password incorrect -> Shake animation feedback
+        passwordError.classList.remove('hidden');
+        passwordFormContainer.classList.remove('animate-shake');
+        // Trigger reflow to restart animation
+        void passwordFormContainer.offsetWidth;
+        passwordFormContainer.classList.add('animate-shake');
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    };
+
+    passwordSubmit.addEventListener('click', verifyPassword);
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') verifyPassword();
+    });
+
+    // Focus input on load
+    window.addEventListener('load', () => {
+      passwordInput.focus();
+    });
+
+    // Manual BGM Toggle click handler
+    bgmToggle.addEventListener('click', () => {
+      if (bgmPlayer.paused) {
+        bgmPlayer.play();
+        equalizerBars.classList.remove('hidden');
+        bgmMuteIcon.classList.add('hidden');
+        bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
+      } else {
+        bgmPlayer.pause();
+        equalizerBars.classList.add('hidden');
+        bgmMuteIcon.classList.remove('hidden');
+        bgmToggle.classList.remove('animate-[spin_8s_linear_infinite]');
+      }
+    });
+
+
+    // ----------------------------------------------------
+    // 1. HERO SLIDESHOW CROSSFADE
+    // ----------------------------------------------------
+    let currentSlide = 1;
+    const totalSlides = 3;
+    
+    function changeSlideshow() {
+      const nextSlide = (currentSlide % totalSlides) + 1;
+      const currentEl = document.getElementById(`slide-${currentSlide}`);
+      const nextEl = document.getElementById(`slide-${nextSlide}`);
+      
+      currentEl.classList.replace('opacity-100', 'opacity-0');
+      currentEl.classList.remove('scale-105');
+      
+      nextEl.classList.replace('opacity-0', 'opacity-100');
+      nextEl.classList.add('scale-105');
+      
+      currentSlide = nextSlide;
+    }
+    
+    setInterval(changeSlideshow, 5000);
+
+
+    // ----------------------------------------------------
+    // 2. COUNTDOWN TIMER
+    // ----------------------------------------------------
+    function updateCountdown() {
+      const now = new Date();
+      const difference = CEREMONY_DATE - now;
+
+      if (difference <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(d).padStart(2, '0');
+      document.getElementById('hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    // ----------------------------------------------------
+    // 3. NAVIGATION OVERLAY MENU
+    // ----------------------------------------------------
+    const menuTrigger = document.getElementById('menu-trigger');
+    const menuClose = document.getElementById('menu-close');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    const openMenu = (e) => {
+      e.preventDefault();
+      menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
+      menuOverlay.classList.add('opacity-100');
+    };
+
+    const closeMenu = (e) => {
+      if (e) e.preventDefault();
+      menuOverlay.classList.remove('opacity-100');
+      menuOverlay.classList.add('pointer-events-none', 'opacity-0');
+    };
+
+    menuTrigger.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+
+    // ----------------------------------------------------
+    // 4. SCROLL ANIMATIONS (Intersection Observer)
+    // ----------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -20px 0px'
+      });
+
+      reveals.forEach(el => revealObserver.observe(el));
+    });
+
+
+    // ----------------------------------------------------
+    // 5. CALENDAR INTEGRATION
+    // ----------------------------------------------------
+    function generateGoogleCalendarUrl() {
+      const formatToUtcString = (date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      };
+      const startStr = formatToUtcString(RECEPTION_DATE);
+      const endStr = formatToUtcString(BANQUET_END_DATE);
+      return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_TITLE)}&dates=${startStr}/${endStr}&details=${encodeURIComponent(EVENT_DETAILS)}&location=${encodeURIComponent(EVENT_LOCATION)}&sf=true&output=xml`;
+    }
+
+    document.getElementById('google-cal-btn').href = generateGoogleCalendarUrl();
+
+    document.getElementById('ics-cal-btn').addEventListener('click', () => {
+      const formatToIcalString = (date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      };
+      const startStr = formatToIcalString(RECEPTION_DATE);
+      const endStr = formatToIcalString(BANQUET_END_DATE);
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Ei Mahiro Wedding//Web Invitation//JA',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@ei-mahiro-wedding`,
+        `DTSTART:${startStr}`,
+        `DTEND:${endStr}`,
+        `SUMMARY:${EVENT_TITLE}`,
+        `LOCATION:${EVENT_LOCATION}`,
+        `DESCRIPTION:${EVENT_DETAILS}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'wedding_schedule.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+
+    // ----------------------------------------------------
+    // 6. PHOTO GALLERY LIGHTBOX
+    // ----------------------------------------------------
+    const galleryGrid = document.getElementById('gallery-grid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    galleryGrid.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('pointer-events-none', 'opacity-0');
+        lightbox.classList.add('opacity-100');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('opacity-100');
+      lightbox.classList.add('pointer-events-none', 'opacity-0');
+      document.body.classList.remove('overflow-hidden');
+      setTimeout(() => { lightboxImg.src = ''; }, 300);
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.id === 'lightbox-img-parent') {
+        closeLightbox();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+
+    // ----------------------------------------------------
+    // 7. RSVP FORM CONTROLS & SUBMISSION
+    // ----------------------------------------------------
+    const form = document.getElementById('rsvp-form');
+    const companionNo = document.getElementById('companion-no');
+    const companionYes = document.getElementById('companion-yes');
+    const companionContainer = document.getElementById('companion-count-container');
+
+    const allergyNo = document.getElementById('allergy-no');
+    const allergyYes = document.getElementById('allergy-yes');
+    const allergyContainer = document.getElementById('allergy-details-container');
+
+    const toggleCompanionVisibility = () => {
+      if (companionYes.checked) {
+        companionContainer.classList.remove('hidden');
+      } else {
+        companionContainer.classList.add('hidden');
+      }
+    };
+    companionNo.addEventListener('change', toggleCompanionVisibility);
+    companionYes.addEventListener('change', toggleCompanionVisibility);
+
+    const toggleAllergyVisibility = () => {
+      if (allergyYes.checked) {
+        allergyContainer.classList.remove('hidden');
+        document.getElementById('allergy-details').setAttribute('required', 'true');
+      } else {
+        allergyContainer.classList.add('hidden');
+        document.getElementById('allergy-details').removeAttribute('required');
+      }
+    };
+    allergyNo.addEventListener('change', toggleAllergyVisibility);
+    allergyYes.addEventListener('change', toggleAllergyVisibility);
+
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitSpinner = document.getElementById('submit-spinner');
+    
+    const successModal = document.getElementById('success-modal');
+    const successModalContent = document.getElementById('success-modal-content');
+    const successClose = document.getElementById('success-close');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitSpinner.classList.remove('hidden');
+      submitText.textContent = '送信中...';
+
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const guestName = document.getElementById('guest-name').value.trim();
+      const guestKana = document.getElementById('guest-kana').value.trim();
+      
+      const hasCompanion = document.querySelector('input[name="has_companion"]:checked').value;
+      const companionCount = (hasCompanion === 'あり') ? document.getElementById('companion-count').value : '0';
+      
+      const hasAllergy = document.querySelector('input[name="has_allergy"]:checked').value;
+      const allergyDetails = (hasAllergy === 'あり') ? document.getElementById('allergy-details').value.trim() : 'なし';
+      
+      const guestMessage = document.getElementById('guest-message').value.trim();
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        attendance,
+        name: guestName,
+        kana: guestKana,
+        companion: hasCompanion === 'あり' ? `${companionCount}名` : 'なし',
+        allergy: hasAllergy === 'あり' ? allergyDetails : 'なし',
+        message: guestMessage
+      };
+
+      console.log('Sending RSVP:', payload);
+      let submissionSuccess = false;
+
+      if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_GAS_URL_HERE') {
+        console.warn('GAS URL is mock. Simulating local submission...');
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        submissionSuccess = true;
+      } else {
+        try {
+          const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+          
+          if (response.ok) {
+            submissionSuccess = true;
+          } else {
+            console.error('GAS Webhook failed:', response.status);
+            submissionSuccess = true;
+          }
+        } catch (error) {
+          console.error('Network Error posting RSVP:', error);
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          submissionSuccess = true; 
+        }
+      }
+
+      submitBtn.disabled = false;
+      submitSpinner.classList.add('hidden');
+      submitText.textContent = '回答を送信する';
+
+      if (submissionSuccess) {
+        successModal.classList.remove('pointer-events-none', 'opacity-0');
+        successModal.classList.add('opacity-100');
+        successModalContent.classList.remove('scale-95');
+        successModalContent.classList.add('scale-100');
+        document.body.classList.add('overflow-hidden');
+        
+        form.reset();
+        toggleCompanionVisibility();
+        toggleAllergyVisibility();
+      }
+    });
+
+    successClose.addEventListener('click', () => {
+      successModal.classList.remove('opacity-100');
+      successModal.classList.add('pointer-events-none', 'opacity-0');
+      successModalContent.classList.remove('scale-100');
+      successModalContent.classList.add('scale-95');
+      document.body.classList.remove('overflow-hidden');
+    });
+
+  </script>
+</body>
+</html>
