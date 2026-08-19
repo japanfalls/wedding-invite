@@ -923,28 +923,22 @@
               loaderScreen.classList.remove('bg-ivory');
               loaderScreen.classList.add('bg-transparent');
 
-              // Fade in the actual Hero text content ("Wedding Invitation" names, date) at translate-y-0
+              // Fade in the actual Hero text content ("Wedding Invitation" names, date) directly at its final position (translate-y-12)
               heroContent.classList.remove('opacity-0', 'translate-y-4');
-              heroContent.classList.add('opacity-100', 'translate-y-0');
+              heroContent.classList.add('opacity-100', 'translate-y-12');
 
-              // Step 3: Slide down the text
+              // After a short delay, fade out solid white loader background to slowly reveal background photo (Ken Burns)
               introTimeouts.push(setTimeout(() => {
-                // Slide down by 3 characters (approx 48px via translate-y-12)
-                heroContent.classList.replace('translate-y-0', 'translate-y-12');
+                triggerMainReveal();
                 
-                // Step 4: After slide down complete, fade out solid white loader background to slowly reveal background photo (Ken Burns)
-                introTimeouts.push(setTimeout(() => {
-                  triggerMainReveal();
-                }, 1500));
-
-                // Cleanup: Completely hide loader and lock screen (3000ms after Step 4)
+                // Cleanup: Completely hide loader and lock screen (3000ms after reveal)
                 introTimeouts.push(setTimeout(() => {
                   lockScreen.classList.add('hidden');
                   loaderScreen.classList.add('hidden');
                   if (loaderBg) loaderBg.classList.add('hidden');
                 }, 3000));
 
-              }, 1800)); // Time to read the text before sliding it down
+              }, 1800)); // Time to read the text before revealing the photo
 
             }, 1000)); // Time between Step 1 fadeout and Step 2 text fadein
 
