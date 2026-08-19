@@ -222,57 +222,184 @@
   <!-- ========================================== -->
   <!-- 0-B. INTRO LOADER SCREEN -->
   <!-- ========================================== -->
-  <div id="loader-screen" class="fixed inset-0 bg-ivory z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 ease-in-out cursor-pointer select-none">
+  <!-- Removed transition-all and duration classes initially to allow instant reveal on unlock without flashing -->
+  <div id="loader-screen" class="fixed inset-0 bg-ivory z-40 opacity-0 pointer-events-none cursor-pointer select-none">
     
-    <!-- Step 1: The Beginning of Our Story -->
-    <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
-      <p class="font-serif italic text-2xl sm:text-3xl text-sage-dark tracking-[0.15em] text-center whitespace-nowrap">
-        The Beginning of Our Story
-      </p>
-    </div>
+    <!-- SVG Defs for gradients used in botanical decorations -->
+    <svg style="width:0; height:0; position:absolute;" width="0" height="0">
+      <defs>
+        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F9F5EB" />
+          <stop offset="30%" stop-color="#E6C875" />
+          <stop offset="70%" stop-color="#D4AF37" />
+          <stop offset="100%" stop-color="#AA822C" />
+        </linearGradient>
+        <linearGradient id="sage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#C5CCA9" />
+          <stop offset="50%" stop-color="#8F9779" />
+          <stop offset="100%" stop-color="#5E6649" />
+        </linearGradient>
+        <linearGradient id="rose-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FCE4EC" />
+          <stop offset="50%" stop-color="#F8BBD0" />
+          <stop offset="100%" stop-color="#E91E63" />
+        </linearGradient>
+      </defs>
+    </svg>
 
-    <!-- Step 2 & 3: Wedding Invitation & Corner Botanicals -->
-    <div id="intro-step2" class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
+    <!-- Constrained container to match smartphone screen frame even on desktop -->
+    <div class="w-full max-w-md h-full mx-auto relative flex flex-col items-center justify-center overflow-hidden">
       
-      <!-- Step 3: Corner botanicals (Delicate leaf SVGs) -->
-      <!-- Top Left -->
-      <div class="intro-botanical absolute top-8 left-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform -rotate-45">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-        </svg>
-      </div>
-      <!-- Top Right -->
-      <div class="intro-botanical absolute top-8 right-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform rotate-45">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-        </svg>
-      </div>
-      <!-- Bottom Left -->
-      <div class="intro-botanical absolute bottom-8 left-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform -rotate-135">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-        </svg>
-      </div>
-      <!-- Bottom Right -->
-      <div class="intro-botanical absolute bottom-8 right-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform rotate-135">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-        </svg>
+      <!-- Step 1: The Beginning of Our Story -->
+      <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
+        <p class="font-serif italic text-2xl sm:text-3xl text-sage-dark tracking-[0.15em] text-center whitespace-nowrap">
+          The Beginning of Our Story
+        </p>
       </div>
 
-      <!-- Step 2 Texts -->
-      <div class="text-center space-y-4">
-        <p class="font-script text-4xl text-gold-accent tracking-wider">Wedding Invitation</p>
-        <p class="font-display text-xl text-sage-dark tracking-[0.2em] uppercase whitespace-nowrap">Ei &amp; Mahiro</p>
-        <div class="h-[1px] w-16 bg-gold/30 mx-auto my-1"></div>
-        <p class="text-[10px] text-sage-dark/80 tracking-[0.3em] uppercase">村上 瑛 ＆ 横田 真潤</p>
-        <p class="text-[11px] font-display text-charcoal/70 tracking-widest mt-1">2027.10.11</p>
-      </div>
-    </div>
+      <!-- Step 2 & 3: Wedding Invitation & Corner Botanicals -->
+      <div id="intro-step2" class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
+        
+        <!-- Step 3: Premium Corner Botanicals (Intricate Multi-colored leaf & flower SVGs) -->
+        <!-- Top Left -->
+        <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4">
+          <svg viewBox="0 0 120 120" class="w-full h-full">
+            <path d="M 0 0 C 40 10 70 40 85 90" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M 0 0 C 20 25 35 60 40 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M 30 12 Q 25 35 48 40 Q 53 18 30 12 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 55 35 Q 50 58 72 60 Q 77 38 55 35 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 12 35 Q -3 55 10 65 Q 25 45 12 35 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <path d="M 28 65 Q 20 85 38 90 Q 45 70 28 65 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <g transform="translate(18, 18)">
+              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
+              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
+              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
+              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
+              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            </g>
+            <g transform="translate(48, 48)">
+              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
+              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
+              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
+              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
+              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+            </g>
+            <circle cx="28" cy="5" r="3" fill="url(#gold-grad)" />
+            <circle cx="5" cy="28" r="3" fill="url(#gold-grad)" />
+            <circle cx="72" cy="25" r="2.5" fill="url(#gold-grad)" />
+            <circle cx="25" cy="72" r="2.5" fill="url(#gold-grad)" />
+          </svg>
+        </div>
+        <!-- Top Right -->
+        <div id="botanical-tr" class="intro-botanical absolute top-4 right-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 -translate-y-4 scale-x-[-1]">
+          <svg viewBox="0 0 120 120" class="w-full h-full">
+            <path d="M 0 0 C 40 10 70 40 85 90" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M 0 0 C 20 25 35 60 40 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M 30 12 Q 25 35 48 40 Q 53 18 30 12 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 55 35 Q 50 58 72 60 Q 77 38 55 35 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 12 35 Q -3 55 10 65 Q 25 45 12 35 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <path d="M 28 65 Q 20 85 38 90 Q 45 70 28 65 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <g transform="translate(18, 18)">
+              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
+              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
+              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
+              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
+              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            </g>
+            <g transform="translate(48, 48)">
+              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
+              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
+              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
+              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
+              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+            </g>
+            <circle cx="28" cy="5" r="3" fill="url(#gold-grad)" />
+            <circle cx="5" cy="28" r="3" fill="url(#gold-grad)" />
+            <circle cx="72" cy="25" r="2.5" fill="url(#gold-grad)" />
+            <circle cx="25" cy="72" r="2.5" fill="url(#gold-grad)" />
+          </svg>
+        </div>
+        <!-- Bottom Left -->
+        <div id="botanical-bl" class="intro-botanical absolute bottom-4 left-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 translate-y-4 scale-y-[-1]">
+          <svg viewBox="0 0 120 120" class="w-full h-full">
+            <path d="M 0 0 C 40 10 70 40 85 90" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M 0 0 C 20 25 35 60 40 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M 30 12 Q 25 35 48 40 Q 53 18 30 12 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 55 35 Q 50 58 72 60 Q 77 38 55 35 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 12 35 Q -3 55 10 65 Q 25 45 12 35 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <path d="M 28 65 Q 20 85 38 90 Q 45 70 28 65 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <g transform="translate(18, 18)">
+              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
+              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
+              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
+              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
+              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            </g>
+            <g transform="translate(48, 48)">
+              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
+              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
+              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
+              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
+              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+            </g>
+            <circle cx="28" cy="5" r="3" fill="url(#gold-grad)" />
+            <circle cx="5" cy="28" r="3" fill="url(#gold-grad)" />
+            <circle cx="72" cy="25" r="2.5" fill="url(#gold-grad)" />
+            <circle cx="25" cy="72" r="2.5" fill="url(#gold-grad)" />
+          </svg>
+        </div>
+        <!-- Bottom Right -->
+        <div id="botanical-br" class="intro-botanical absolute bottom-4 right-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 translate-y-4 scale-[-1]">
+          <svg viewBox="0 0 120 120" class="w-full h-full">
+            <path d="M 0 0 C 40 10 70 40 85 90" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M 0 0 C 20 25 35 60 40 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M 30 12 Q 25 35 48 40 Q 53 18 30 12 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 55 35 Q 50 58 72 60 Q 77 38 55 35 Z" fill="url(#sage-grad)" opacity="0.95" />
+            <path d="M 12 35 Q -3 55 10 65 Q 25 45 12 35 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <path d="M 28 65 Q 20 85 38 90 Q 45 70 28 65 Z" fill="url(#sage-grad)" opacity="0.85" />
+            <g transform="translate(18, 18)">
+              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
+              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
+              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
+              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
+              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            </g>
+            <g transform="translate(48, 48)">
+              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
+              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
+              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
+              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
+              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
+              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+            </g>
+            <circle cx="28" cy="5" r="3" fill="url(#gold-grad)" />
+            <circle cx="5" cy="28" r="3" fill="url(#gold-grad)" />
+            <circle cx="72" cy="25" r="2.5" fill="url(#gold-grad)" />
+            <circle cx="25" cy="72" r="2.5" fill="url(#gold-grad)" />
+          </svg>
+        </div>
 
-    <!-- Skip Hint Overlay -->
-    <div id="intro-skip-hint" class="absolute bottom-10 left-0 right-0 text-center pointer-events-none transition-all duration-[800ms] opacity-0">
-      <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light">Tap to Skip</p>
+        <!-- Step 2 Texts -->
+        <div class="text-center space-y-4">
+          <p class="font-script text-4xl text-gold-accent tracking-wider">Wedding Invitation</p>
+          <p class="font-display text-xl text-sage-dark tracking-[0.25em] uppercase whitespace-nowrap">Ei &amp; Mahiro</p>
+          <div class="h-[1px] w-16 bg-gold/30 mx-auto my-1"></div>
+          <p class="text-[10px] text-sage-dark/80 tracking-[0.3em] uppercase">村上 瑛 ＆ 横田 真潤</p>
+          <p class="text-[11px] font-display text-charcoal/70 tracking-widest mt-1">2027.10.11</p>
+        </div>
+      </div>
+
+      <!-- Skip Hint Overlay -->
+      <div id="intro-skip-hint" class="absolute bottom-10 left-0 right-0 text-center pointer-events-none transition-all duration-[800ms] opacity-0">
+        <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light">Tap to Skip</p>
+      </div>
     </div>
   </div>
 
@@ -340,7 +467,7 @@
         </svg>
         
         <!-- Script font top accent -->
-        <p class="font-script text-3xl text-gold-accent mb-3">Save the Date</p>
+        <p class="font-script text-3xl text-gold-accent mb-3">Wedding Invitation</p>
 
         <!-- Bride & Groom Names -->
         <h1 class="font-display text-4xl text-charcoal font-semibold tracking-wider mb-2">
@@ -874,7 +1001,8 @@
     let introSkipped = false;
 
     const startIntroAnimation = () => {
-      // Make loader screen pointer events active
+      // Remove any inline transition styles so it pops in instantly
+      loaderScreen.style.transition = 'none';
       loaderScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
       loaderScreen.classList.add('opacity-100', 'pointer-events-auto');
 
@@ -899,7 +1027,7 @@
         step2.classList.add('opacity-100');
         
         botanicals.forEach(el => {
-          el.classList.remove('opacity-0');
+          el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
           el.classList.add('opacity-100');
         });
 
@@ -920,6 +1048,9 @@
     };
 
     const triggerMainReveal = () => {
+      // Set transition explicitly before fading out to prevent quick flashes
+      loaderScreen.style.transition = 'opacity 1.2s ease-in-out';
+      
       // Fade out loader screen
       loaderScreen.classList.remove('opacity-100');
       loaderScreen.classList.add('opacity-0', 'pointer-events-none');
@@ -984,6 +1115,10 @@
       if (inputVal === ACCESS_PASSWORD) {
         // Password correct -> Unlock and trigger intro flow
         passwordError.classList.add('hidden');
+        
+        // Remove transitions from loader-screen so it reveals instantly without flashing
+        loaderScreen.style.transition = 'none';
+        
         lockScreen.classList.add('opacity-0', 'pointer-events-none');
         
         // Setup BGM play (interaction allows this now)
