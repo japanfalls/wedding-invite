@@ -180,6 +180,34 @@
         transform: scale(1.12);
       }
     }
+
+    /* Shine effect for typing animation */
+    .shine-effect {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .shine-effect::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      animation: shineGlint 1.2s ease-in-out forwards;
+    }
+    @keyframes shineGlint {
+      100% {
+        left: 150%;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-sage/20 selection:text-sage-deep overflow-x-hidden">
@@ -214,7 +242,7 @@
         </button>
       </div>
       
-      <p class="text-[9px] text-sage-dark/60 font-light pt-6">※パスワードが分からない場合は新郎新婦へお問い合わせください。</p>
+      <p class="text-[9px] text-sage-dark/60 font-light pt-6 text-center leading-relaxed">※パスワードが分からない場合は<br>新郎新婦へお問い合わせください。</p>
     </div>
   </div>
 
@@ -250,9 +278,10 @@
       
       <!-- Step 1: The Beginning of Our Story (Font style changed to clean display italic with responsive sizing) -->
       <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
-        <p class="font-display italic text-xl sm:text-2xl text-sage-dark tracking-[0.12em] text-center px-4">
-          The Beginning of Our Story
-        </p>
+        <div class="flex flex-col items-center text-center">
+          <span id="type-part1" class="text-xs sm:text-sm text-charcoal font-light tracking-[0.2em] mb-2 select-none opacity-0 transition-opacity duration-300"></span>
+          <span id="type-part2" class="font-display italic text-3xl sm:text-4xl text-gold font-semibold tracking-[0.1em] select-none opacity-0 transition-opacity duration-300 relative inline-block"></span>
+        </div>
       </div>
 
       <!-- Step 2 & 3: Corner Botanicals (Step 2 text is now directly rendered via #hero-content underneath) -->
@@ -298,139 +327,133 @@
       </div>
 
       <!-- Premium Corner Botanicals (Attached to Hero Section for scrolling) -->
-      <!-- Top Left Corner: Rose & Gold Berries -->
-      <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4 z-20 pointer-events-none">
-        <svg viewBox="0 0 120 120" class="w-full h-full">
-          <!-- Sage leaf washes -->
-          <path d="M 12 32 C 8 48 24 56 30 44 C 36 32 26 18 12 32 Z" fill="url(#sage-grad)" opacity="0.75" />
-          <path d="M 42 20 C 32 8 50 0 56 12 C 62 24 52 32 42 20 Z" fill="url(#sage-grad)" opacity="0.7" />
-          <path d="M 12 55 C -2 68 18 80 22 68 C 26 56 22 45 12 55 Z" fill="url(#sage-grad)" opacity="0.65" />
-          <!-- Sketch outlines for leaves -->
-          <path d="M 12 32 C 9 40 20 50 26 42 C 32 34 23 22 14 30" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <path d="M 42 20 C 34 10 48 2 53 10 C 58 18 50 26 44 18" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <path d="M 12 55 C 2 64 14 74 18 66 C 22 58 18 48 10 52" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <!-- Stems -->
-          <path d="M 0 0 C 15 15 35 30 35 45" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <path d="M 0 0 C 25 10 55 15 65 20" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <path d="M 0 0 C 10 25 18 55 20 65" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <!-- Rose Bloom -->
-          <g transform="translate(32, 32)">
-            <circle cx="0" cy="0" r="16" fill="url(#rose-grad)" opacity="0.85" />
-            <!-- Rose petals lines -->
-            <path d="M -12 -4 C -14 -14 14 -14 12 -4" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M 10 -6 C 16 2 10 14 -2 12" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M -10 -6 C -16 2 -10 14 2 12" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M -6 -1 C -8 -6 8 -6 6 -1" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M 4 -3 C 6 2 2 6 -2 5" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <!-- Pistil center -->
-            <circle cx="0" cy="1" r="2.5" fill="url(#gold-grad)" />
+      <!-- Top Left Corner: Rich Black Sketch Rose Bouquet (Non-transparent) -->
+      <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-44 h-44 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4 z-20 pointer-events-none">
+        <svg viewBox="0 0 160 160" class="w-full h-full">
+          <!-- Main Stems and Leaf Backdrops -->
+          <path d="M 0 0 C 30 20 50 60 40 100" stroke="#2D322B" stroke-width="1.2" fill="none" />
+          <path d="M 0 0 C 60 30 80 50 110 40" stroke="#2D322B" stroke-width="1.2" fill="none" />
+          <path d="M 0 0 C 20 60 40 110 50 130" stroke="#2D322B" stroke-width="1" fill="none" />
+
+          <!-- Background dense leaves to add 3x volume -->
+          <path d="M 15 35 C -5 65 35 75 40 50 C 45 25 35 15 15 35 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 15 35 Q 27 42 40 50" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          <path d="M 22 38 Q 20 46 18 52" stroke="#2D322B" stroke-width="0.6" fill="none" />
+          <path d="M 30 38 Q 32 44 34 50" stroke="#2D322B" stroke-width="0.6" fill="none" />
+          
+          <path d="M 50 25 C 30 5 70 -5 75 15 C 80 35 70 45 50 25 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 50 25 Q 62 15 75 15" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          
+          <path d="M 10 65 C -10 85 20 105 30 85 C 40 65 30 45 10 65 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 10 65 Q 20 75 30 85" stroke="#2D322B" stroke-width="0.8" fill="none" />
+
+          <g transform="translate(65, 10)">
+            <path d="M 0 0 C 15 5 35 10 50 8" stroke="#2D322B" stroke-width="1.2" fill="none" />
+            <path d="M 10 1 C 12 -5 20 -7 22 -4 C 24 -1 18 3 15 2 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 22 3 C 24 -3 32 -5 34 -2 C 36 1 30 5 27 4 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 34 5 C 36 -1 44 -3 46 0 C 48 3 42 7 39 6 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
           </g>
-          <!-- Gold Berries -->
-          <g transform="translate(62, 42)">
-            <path d="M 0 0 C 10 -10 20 -5 18 5" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <circle cx="10" cy="-6" r="3.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="20" cy="-3" r="3" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="16" cy="5" r="3" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
+
+          <!-- Main Detailed Rose Bloom -->
+          <g transform="translate(42, 42)">
+            <path d="M -22 -6 C -28 -28 28 -28 22 -6 C 30 15 15 30 -6 26 C -25 22 -20 5 -22 -6 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M -15 -3 C -18 -18 18 -18 15 -3 C 20 8 10 18 -4 16 C -16 14 -12 3 -15 -3 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+            <path d="M -9 -1 C -11 -11 11 -11 9 -1 C 12 4 6 10 -2 9 C -10 8 -8 2 -9 -1 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M -4 0 C -5 -5 5 -5 4 0 C 5 4 -5 4 -4 0 Z" fill="#2D322B" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M -15 -10 Q -5 -12 5 -10" stroke="#2D322B" stroke-width="0.5" fill="none" />
+            <path d="M -18 -3 Q -20 5 -12 12" stroke="#2D322B" stroke-width="0.5" fill="none" />
+            <path d="M 18 -3 Q 20 5 12 12" stroke="#2D322B" stroke-width="0.5" fill="none" />
           </g>
+
+          <!-- Second Flower: Anemone Bloom on Left -->
+          <g transform="translate(20, 85) rotate(-15)">
+            <path d="M -14 -14 C 14 -28 28 0 0 14 C -28 0 -14 -14 -14 -14 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M 0 0 L -12 -12" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <path d="M 0 0 L 12 -12" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <path d="M 0 0 L 12 12" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <path d="M 0 0 L -12 12" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <circle cx="0" cy="0" r="4.5" fill="#2D322B" />
+            <circle cx="0" cy="0" r="6.5" stroke="#2D322B" stroke-width="0.6" stroke-dasharray="2,2" fill="none" />
+          </g>
+
+          <!-- Third Flower: Wild Bellflower on Right -->
+          <g transform="translate(85, 35) rotate(45)">
+            <path d="M -10 -5 C -15 -18 15 -18 10 -5 C 15 10 -15 10 -10 -5 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M -6 -5 C -10 -12 10 -12 6 -5" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <path d="M 0 -15 L 0 5" stroke="#2D322B" stroke-width="0.6" fill="none" />
+            <circle cx="0" cy="-15" r="1.5" fill="#2D322B" />
+          </g>
+          
+          <!-- Wild grass and berries twigs -->
+          <path d="M 0 0 C 10 40 40 100 80 115" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          <circle cx="50" cy="95" r="2" fill="#2D322B" />
+          <circle cx="65" cy="105" r="2" fill="#2D322B" />
+          <circle cx="78" cy="112" r="1.8" fill="#2D322B" />
         </svg>
       </div>
 
-      <!-- Top Right Corner: Tulip & Hanging Bells -->
-      <div id="botanical-tr" class="intro-botanical absolute top-4 right-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 -translate-y-4 z-20 pointer-events-none">
-        <svg viewBox="0 0 120 120" class="w-full h-full">
-          <!-- Sage wash -->
-          <path d="M 108 32 C 112 48 96 56 90 44 C 84 32 94 18 108 32 Z" fill="url(#sage-grad)" opacity="0.75" />
-          <path d="M 78 20 C 88 8 70 0 64 12 C 58 24 68 32 78 20 Z" fill="url(#sage-grad)" opacity="0.7" />
-          <path d="M 108 32 C 111 40 100 50 94 42 C 88 34 97 22 106 30" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <path d="M 78 20 C 86 10 72 2 67 10 C 62 18 70 26 76 18" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <!-- Stems -->
-          <path d="M 120 0 C 105 15 85 30 85 45" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <path d="M 120 0 C 95 10 65 15 55 20" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <!-- Tulip -->
-          <g transform="translate(85, 30) rotate(25)">
-            <path d="M -6 -12 C -12 -28 12 -28 6 -12 C 12 0 -12 0 -6 -12 Z" fill="url(#rose-grad)" opacity="0.85" />
-            <path d="M -5 6 C -12 -2 -9 -20 0 -22 C 9 -20 12 -2 5 6" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M 0 -22 C -3 -8 3 -8 0 6" stroke="#A4937A" stroke-width="0.6" fill="none" />
-          </g>
-          <!-- Bell flowers hanging -->
-          <g transform="translate(50, 45) rotate(-15)">
-            <path d="M 0 0 C -10 12 -12 25 -10 30" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <!-- Bell 1 -->
-            <path d="M -6 14 C -12 18 -10 24 -6 22 C -2 20 -2 16 -6 14 Z" fill="url(#rose-grad)" opacity="0.8" stroke="#A4937A" stroke-width="0.6" />
-            <!-- Bell 2 -->
-            <path d="M -10 26 C -16 30 -14 36 -10 34 C -6 32 -6 28 -10 26 Z" fill="url(#rose-grad)" opacity="0.8" stroke="#A4937A" stroke-width="0.6" />
-          </g>
-        </svg>
-      </div>
+      <!-- Bottom Right Corner: Rich Black Sketch Daisy & Poppy (Non-transparent) -->
+      <div id="botanical-br" class="intro-botanical absolute bottom-4 right-4 w-44 h-44 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 translate-y-4 z-20 pointer-events-none">
+        <svg viewBox="0 0 160 160" class="w-full h-full">
+          <!-- Main Stems and Leaf Backdrops -->
+          <path d="M 160 160 C 130 140 110 100 120 60" stroke="#2D322B" stroke-width="1.2" fill="none" />
+          <path d="M 160 160 C 100 130 80 110 50 120" stroke="#2D322B" stroke-width="1.2" fill="none" />
+          <path d="M 160 160 C 140 100 120 50 110 30" stroke="#2D322B" stroke-width="1" fill="none" />
 
-      <!-- Bottom Left Corner: Anemone/Poppy & Lavender -->
-      <div id="botanical-bl" class="intro-botanical absolute bottom-4 left-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 translate-y-4 z-20 pointer-events-none">
-        <svg viewBox="0 0 120 120" class="w-full h-full">
-          <!-- Sage leaf washes -->
-          <path d="M 12 88 C 8 72 24 64 30 76 C 36 88 26 102 12 88 Z" fill="url(#sage-grad)" opacity="0.75" />
-          <path d="M 42 100 C 32 112 50 120 56 108 C 62 96 52 88 42 100 Z" fill="url(#sage-grad)" opacity="0.7" />
-          <path d="M 12 88 C 9 80 20 70 26 78 C 32 86 23 98 14 90" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <path d="M 42 100 C 34 110 48 118 53 110 C 58 102 50 94 44 102" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <!-- Stems -->
-          <path d="M 0 120 C 15 105 35 90 35 75" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <path d="M 0 120 C 25 110 55 105 65 100" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <!-- Anemone Bloom -->
-          <g transform="translate(32, 88)">
-            <!-- Petals wash -->
-            <circle cx="0" cy="0" r="16" fill="url(#rose-grad)" opacity="0.8" />
-            <!-- Outlines -->
-            <circle cx="0" cy="0" r="16" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M -16 0 C -12 -8 12 -8 16 0" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M 0 -16 C 8 -12 8 12 0 16" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <path d="M -11 -11 C -4 -4 11 11 11 11" stroke="#A4937A" stroke-width="0.6" fill="none" />
-            <path d="M 11 -11 C 4 -4 -11 11 -11 11" stroke="#A4937A" stroke-width="0.6" fill="none" />
-            <!-- Center stamen detail -->
-            <circle cx="0" cy="0" r="5" fill="#586445" stroke="#A4937A" stroke-width="0.8" />
-            <circle cx="2" cy="-2" r="0.6" fill="#FFFDF9" />
-            <circle cx="-2" cy="2" r="0.6" fill="#FFFDF9" />
-            <circle cx="2" cy="2" r="0.6" fill="#FFFDF9" />
-            <circle cx="-2" cy="-2" r="0.6" fill="#FFFDF9" />
-          </g>
-          <!-- Lavender spikes -->
-          <g transform="translate(68, 85) rotate(-20)">
-            <path d="M 0 30 L 0 -15" stroke="#6D735B" stroke-width="0.8" fill="none" />
-            <circle cx="0" cy="-15" r="2.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="-3" cy="-10" r="2.2" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="3" cy="-10" r="2.2" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="-4" cy="-5" r="2" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="4" cy="-5" r="2" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-            <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.6" />
-          </g>
-        </svg>
-      </div>
+          <!-- Background dense leaves to add 3x volume -->
+          <path d="M 145 125 C 165 95 125 85 120 110 C 115 135 125 145 145 125 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 145 125 Q 133 118 120 110" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          
+          <path d="M 110 135 C 130 155 90 165 85 145 C 80 125 90 115 110 135 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 110 135 Q 98 145 85 145" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          
+          <path d="M 150 95 C 170 75 140 55 130 75 C 120 95 130 115 150 95 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1" />
+          <path d="M 150 95 Q 140 85 130 75" stroke="#2D322B" stroke-width="0.8" fill="none" />
 
-      <!-- Bottom Right Corner: Daisy & Winding Vines -->
-      <div id="botanical-br" class="intro-botanical absolute bottom-4 right-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 translate-y-4 z-20 pointer-events-none">
-        <svg viewBox="0 0 120 120" class="w-full h-full">
-          <!-- Sage leaves -->
-          <path d="M 108 88 C 112 72 96 64 90 76 C 84 88 94 102 108 88 Z" fill="url(#sage-grad)" opacity="0.75" />
-          <path d="M 78 100 C 88 112 70 120 64 108 C 58 96 68 88 78 100 Z" fill="url(#sage-grad)" opacity="0.7" />
-          <path d="M 108 88 C 105 80 100 70 94 78 C 88 86 97 98 106 90" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <path d="M 78 100 C 70 110 84 118 89 110 C 94 102 86 94 80 102" stroke="#6D735B" stroke-width="0.8" fill="none" />
-          <!-- Stems -->
-          <path d="M 120 120 C 105 105 85 90 85 75" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <path d="M 120 120 C 95 110 65 105 55 100" stroke="#A4937A" stroke-width="0.8" fill="none" />
-          <!-- Daisy Flower -->
-          <g transform="translate(88, 88)">
-            <!-- Back wash -->
-            <circle cx="0" cy="0" r="10" fill="url(#gold-grad)" opacity="0.85" />
-            <!-- Sketch petals -->
-            <path d="M 0 0 L 0 -12 M 0 0 L 8 -8 M 0 0 L 12 0 M 0 0 L 8 8 M 0 0 L 0 12 M 0 0 L -8 8 M 0 0 L -12 0 M 0 0 L -8 -8" stroke="#A4937A" stroke-width="0.8" />
-            <!-- Overlap petals -->
-            <path d="M 0 0 L 4 -11 M 0 0 L 11 -4 M 0 0 L 11 4 M 0 0 L 4 11 M 0 0 L -4 11 M 0 0 L -11 4 M 0 0 L -11 -4 M 0 0 L -4 -11" stroke="#A4937A" stroke-width="0.5" />
-            <circle cx="0" cy="0" r="3.5" fill="#FFFDF9" stroke="#A4937A" stroke-width="0.8" />
+          <!-- Leaf 4 (Fern style) -->
+          <g transform="translate(95, 150) scale(-1, -1)">
+            <path d="M 0 0 C 15 5 35 10 50 8" stroke="#2D322B" stroke-width="1.2" fill="none" />
+            <path d="M 10 1 C 12 -5 20 -7 22 -4 C 24 -1 18 3 15 2 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 22 3 C 24 -3 32 -5 34 -2 C 36 1 30 5 27 4 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 34 5 C 36 -1 44 -3 46 0 C 48 3 42 7 39 6 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
           </g>
-          <!-- Winding gold vines -->
-          <g transform="translate(60, 75)">
-            <path d="M 60 45 C 40 30 15 25 0 35 C -10 40 0 50 10 42" stroke="#A4937A" stroke-width="0.8" fill="none" />
-            <circle cx="28" cy="28" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="48" cy="35" r="2.5" fill="url(#gold-grad)" />
+
+          <!-- Main Detailed Daisy/Cosmos Bloom -->
+          <g transform="translate(118, 118)">
+            <circle cx="0" cy="0" r="16" fill="#FDFBF7" />
+            <path d="M 0 0 L 0 -18 M 0 0 L 12 -12 M 0 0 L 18 0 M 0 0 L 12 12 M 0 0 L 0 18 M 0 0 L -12 12 M 0 0 L -18 0 M 0 0 L -12 -12" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M 0 0 L 6 -16 M 0 0 L 16 -6 M 0 0 L 16 6 M 0 0 L 6 16 M 0 0 L -6 16 M 0 0 L -16 6 M 0 0 L -16 -6 M 0 0 L -6 -16" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 0 -18 C 5 -18 6 -12 0 -12 C -6 -12 -5 -18 0 -18 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 12 -12 C 16 -9 12 -6 8 -8 C 4 -10 8 -15 12 -12 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 18 0 C 18 5 12 6 12 0 C 12 -6 18 -5 18 0 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 12 12 C 15 16 9 16 8 12 C 7 8 12 8 12 12 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M 0 18 C -5 18 -6 12 -6 12 C -6 6 0 6 0 18 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M -12 12 C -16 15 -16 9 -12 8 C -8 7 -8 12 -12 12 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M -18 0 C -18 -5 -12 -6 -12 0 C -12 6 -18 5 -18 0 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <path d="M -12 -12 C -15 -16 -9 -16 -8 -12 C -7 -8 -12 -8 -12 -12 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="0.8" />
+            <circle cx="0" cy="0" r="5" fill="#2D322B" stroke="#2D322B" stroke-width="0.8" />
+            <circle cx="0" cy="0" r="3" fill="#FDFBF7" />
           </g>
+
+          <!-- Second Flower: Poppy Bloom on Left-Bottom -->
+          <g transform="translate(140, 75) rotate(15)">
+            <path d="M -14 -14 C 14 -28 28 0 0 14 C -28 0 -14 -14 -14 -14 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M 0 0 L -12 -12 M 0 0 L 12 -12 M 0 0 L 12 12 M 0 0 L -12 12" stroke="#2D322B" stroke-width="0.8" />
+            <circle cx="0" cy="0" r="4" fill="#2D322B" />
+          </g>
+
+          <!-- Third Flower: Wild Aster on Top-Left -->
+          <g transform="translate(75, 125) rotate(-45)">
+            <path d="M -10 -5 C -15 -18 15 -18 10 -5 C 15 10 -15 10 -10 -5 Z" fill="#FDFBF7" stroke="#2D322B" stroke-width="1.2" />
+            <path d="M -6 -5 C -10 -12 10 -12 6 -5" stroke="#2D322B" stroke-width="0.8" fill="none" />
+            <circle cx="0" cy="-12" r="1.5" fill="#2D322B" />
+          </g>
+          
+          <!-- Winding stems and berries -->
+          <path d="M 160 160 C 130 110 80 80 50 60" stroke="#2D322B" stroke-width="0.8" fill="none" />
+          <circle cx="110" cy="65" r="2" fill="#2D322B" />
+          <circle cx="95" cy="55" r="2" fill="#2D322B" />
+          <circle cx="82" cy="48" r="1.8" fill="#2D322B" />
         </svg>
       </div>
 
@@ -442,7 +465,7 @@
 <!-- Tiny Top Header Removed -->
 
       <!-- Main Decorative Hero Elements -->
-      <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1500ms] opacity-0 translate-y-4">
+      <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1200ms] ease-in-out opacity-0 translate-y-4">
         
         <!-- Botanical Ring Wreath SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-20 h-20 text-gold/70 mb-6 draw-svg fill-none stroke-current stroke-[1.5] animate-float-slow">
@@ -453,10 +476,10 @@
         </svg>
         
         <!-- Script font top accent -->
-        <p class="font-script text-3xl text-gold-accent mb-3">Wedding Invitation</p>
+        <p class="font-script text-5xl sm:text-6xl text-gold-accent mb-4 transition-all duration-[1200ms] ease-in-out">Wedding Invitation</p>
 
         <!-- Bride & Groom Names -->
-        <h1 class="font-display text-4xl text-charcoal font-semibold tracking-wider mb-2">
+        <h1 class="font-display text-2xl sm:text-3xl text-charcoal font-semibold tracking-wider mb-2 transition-all duration-[1200ms] ease-in-out">
           Ei <span class="text-gold font-light font-serif">&amp;</span> Mahiro
         </h1>
 
@@ -470,38 +493,33 @@
           at Botanical House Tokyo
         </p>
       </div>
-
-      <!-- Scroll Indicator with modern animating line -->
-      <div id="hero-scroll" class="flex flex-col items-center text-sage-dark transition-all duration-[1500ms] opacity-0 z-10 pb-2">
-        <span class="text-[8px] tracking-[0.25em] uppercase font-light mb-3">Scroll</span>
-        <div class="w-[1px] h-10 bg-gold/30 relative overflow-hidden">
-          <div class="absolute w-full bg-gold top-0 h-0 animate-scroll-down"></div>
-        </div>
-      </div>
     </header>
 
     <!-- ========================================== -->
     <!-- 1-B. COUNTDOWN SECTION -->
     <!-- ========================================== -->
-    <section id="countdown-section" class="reveal py-12 px-8 text-center bg-ivory relative z-10 border-b border-sage-light/20">
-      <div id="hero-countdown" class="max-w-xs mx-auto glass rounded-3xl p-5 shadow-sm border border-sage/10 transition-all duration-[1500ms]">
-        <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light mb-3">Our Wedding Day Countdown</p>
-        <div class="grid grid-cols-4 gap-2 text-center">
+    <section id="countdown-section" class="reveal py-16 px-8 text-center bg-ivory relative z-10 border-b border-sage-light/10">
+      <div id="hero-countdown" class="max-w-xs mx-auto bg-ivory-dark/40 backdrop-blur-sm rounded-2xl p-6 border border-gold/20 shadow-sm transition-all duration-[1500ms]">
+        <!-- Delicate botanical detail on top -->
+        <span class="font-script text-2xl text-gold-accent block mb-2">Save the Date</span>
+        <p class="text-[8px] tracking-[0.3em] text-sage-dark uppercase font-light mb-5">Our Wedding Day Countdown</p>
+        
+        <div class="grid grid-cols-4 gap-3 text-center">
           <div class="flex flex-col">
-            <span id="days" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
-            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Days</span>
+            <span id="days" class="text-3xl font-light font-display text-sage-deep tracking-wider">00</span>
+            <span class="text-[7px] text-sage-dark/80 uppercase tracking-[0.2em] mt-1">Days</span>
           </div>
-          <div class="flex flex-col border-l border-sage-light/60">
-            <span id="hours" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
-            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Hours</span>
+          <div class="flex flex-col border-l border-gold/15">
+            <span id="hours" class="text-3xl font-light font-display text-sage-deep tracking-wider">00</span>
+            <span class="text-[7px] text-sage-dark/80 uppercase tracking-[0.2em] mt-1">Hours</span>
           </div>
-          <div class="flex flex-col border-l border-sage-light/60">
-            <span id="minutes" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
-            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Mins</span>
+          <div class="flex flex-col border-l border-gold/15">
+            <span id="minutes" class="text-3xl font-light font-display text-sage-deep tracking-wider">00</span>
+            <span class="text-[7px] text-sage-dark/80 uppercase tracking-[0.2em] mt-1">Mins</span>
           </div>
-          <div class="flex flex-col border-l border-sage-light/60">
-            <span id="seconds" class="text-2xl font-light text-serif-playfair text-sage-deep">00</span>
-            <span class="text-[8px] text-sage-dark uppercase tracking-widest mt-0.5">Secs</span>
+          <div class="flex flex-col border-l border-gold/15">
+            <span id="seconds" class="text-3xl font-light font-display text-sage-deep tracking-wider">00</span>
+            <span class="text-[7px] text-sage-dark/80 uppercase tracking-[0.2em] mt-1">Secs</span>
           </div>
         </div>
       </div>
@@ -573,8 +591,8 @@
       
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Groom &amp; Bride</span>
-        <h2 class="text-lg text-charcoal font-medium tracking-widest">おふたりのご紹介</h2>
+        <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Profile</span>
+        <h2 class="text-lg text-charcoal font-medium tracking-widest">自己紹介</h2>
       </div>
 
       <div class="space-y-16 max-w-xs mx-auto">
@@ -972,7 +990,6 @@
 
     // ----------------------------------------------------
     // 0. SECURITY PASSWORD GATE & INTRO FLOW
-    // ----------------------------------------------------
     const lockScreen = document.getElementById('lock-screen');
     const loaderScreen = document.getElementById('loader-screen');
     const passwordInput = document.getElementById('password-input');
@@ -983,6 +1000,25 @@
     // Handle gate password verification
     let introTimeouts = [];
     let introSkipped = false;
+
+    // Helper function for typing effect
+    const typeWriter = (element, text, speed, callback) => {
+      let i = 0;
+      element.textContent = '';
+      element.classList.remove('opacity-0');
+      element.classList.add('opacity-100');
+      
+      const type = () => {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          introTimeouts.push(setTimeout(type, speed));
+        } else if (callback) {
+          callback();
+        }
+      };
+      type();
+    };
 
     const startIntroAnimation = () => {
       // Remove any inline transition styles so it pops in instantly and ensure it has bg-ivory
@@ -997,54 +1033,78 @@
       }
 
       const step1 = document.getElementById('intro-step1');
-      const step2 = document.getElementById('intro-step2');
+      const typePart1 = document.getElementById('type-part1');
+      const typePart2 = document.getElementById('type-part2');
       const botanicals = document.querySelectorAll('.intro-botanical');
-      const skipHint = document.getElementById('intro-skip-hint');
       const heroContent = document.getElementById('hero-content');
 
-      // Step 1: The Beginning of Our Story fades in (0ms)
+      // Make sure initial state of hero content is clean (no translate-y-12, no opacity-100)
+      heroContent.classList.remove('opacity-100', 'translate-y-12', 'translate-y-0');
+      heroContent.classList.add('opacity-0', 'translate-y-4');
+
+      // Ensure botanicals are hidden initially
+      botanicals.forEach(el => {
+        el.classList.remove('opacity-100');
+        el.classList.add('opacity-0');
+      });
+
+      // Show step1 container
       step1.classList.remove('opacity-0', 'pointer-events-none');
       step1.classList.add('opacity-100');
 
-      // Step 1: Fades out (1400ms)
-      introTimeouts.push(setTimeout(() => {
-        step1.classList.remove('opacity-100');
-        step1.classList.add('opacity-0');
-      }, 1400));
+      // Start typing Part 1: "The Beginning of"
+      typeWriter(typePart1, "The Beginning of", 50, () => {
+        // Once Part 1 is done typing, start Part 2: "Our Story"
+        typeWriter(typePart2, "Our Story", 75, () => {
+          // Once Part 2 is done typing, trigger Glint/Shine animation
+          typePart2.classList.add('shine-effect');
 
-      // Step 2 & 3: Wedding Invitation & Corner Botanicals fade in (2000ms)
-      introTimeouts.push(setTimeout(() => {
-        // Remove bg-ivory from loader screen to reveal hero text content underneath
-        loaderScreen.classList.remove('bg-ivory');
-        loaderScreen.classList.add('bg-transparent');
+          // Wait 1.5 seconds, then fade out Step 1
+          introTimeouts.push(setTimeout(() => {
+            step1.classList.remove('opacity-100');
+            step1.classList.add('opacity-0');
+            
+            // Step 2: Fade in "Wedding Invitation" text at normal position
+            introTimeouts.push(setTimeout(() => {
+              // Remove bg-ivory to make the loader screen transparent
+              loaderScreen.classList.remove('bg-ivory');
+              loaderScreen.classList.add('bg-transparent');
 
-        // Fade in the actual Hero text content ("Wedding Invitation" names, date)
-        heroContent.classList.remove('opacity-0', 'translate-y-4');
-        heroContent.classList.add('opacity-100', 'translate-y-0');
+              // Fade in the actual Hero text content ("Wedding Invitation" names, date) at translate-y-0
+              heroContent.classList.remove('opacity-0', 'translate-y-4');
+              heroContent.classList.add('opacity-100', 'translate-y-0');
 
-        step2.classList.remove('opacity-0', 'pointer-events-none');
-        step2.classList.add('opacity-100');
-        
-        botanicals.forEach(el => {
-          el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
-          el.classList.add('opacity-100');
+              // Step 3: Slide down the text and simultaneously fade in Left-Top and Right-Bottom flowers
+              introTimeouts.push(setTimeout(() => {
+                // Slide down by 3 characters (approx 48px via translate-y-12)
+                heroContent.classList.replace('translate-y-0', 'translate-y-12');
+
+                // Fade in Left-Top and Right-Bottom flowers
+                botanicals.forEach(el => {
+                  el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
+                  el.classList.add('opacity-100');
+                });
+                
+                // Step 4: After slide down and flowers fade in complete, fade out solid white loader background to slowly reveal background photo (Ken Burns)
+                introTimeouts.push(setTimeout(() => {
+                  triggerMainReveal();
+                }, 1500));
+
+                // Cleanup: Completely hide loader and lock screen (3000ms after Step 4)
+                introTimeouts.push(setTimeout(() => {
+                  lockScreen.classList.add('hidden');
+                  loaderScreen.classList.add('hidden');
+                  if (loaderBg) loaderBg.classList.add('hidden');
+                }, 3000));
+
+              }, 1800)); // Time to read the text before sliding it down
+
+            }, 1000)); // Time between Step 1 fadeout and Step 2 text fadein
+
+          }, 1500)); // Time for Glint animation to display and be read
+
         });
-
-        skipHint.classList.remove('opacity-0');
-        skipHint.classList.add('opacity-40');
-      }, 2000));
-
-      // Step 4: Start transition to main content (3800ms)
-      introTimeouts.push(setTimeout(() => {
-        triggerMainReveal();
-      }, 3800));
-
-      // Cleanup: Completely hide loader and lock screen (5300ms)
-      introTimeouts.push(setTimeout(() => {
-        lockScreen.classList.add('hidden');
-        loaderScreen.classList.add('hidden');
-        if (loaderBg) loaderBg.classList.add('hidden');
-      }, 5300));
+      });
     };
 
     const triggerMainReveal = () => {
@@ -1063,14 +1123,9 @@
 
       // Trigger Ken Burns slow zoom-in on the active slide
       const slide1 = document.getElementById('slide-1');
-      slide1.classList.add('kenburns-active');
-
-      // Smoothly fade/slide in remaining main hero elements (scroll only)
-      // Note: heroContent text is already visible from Step 2
-      const heroScroll = document.getElementById('hero-scroll');
-
-      heroScroll.classList.remove('opacity-0');
-      heroScroll.classList.add('opacity-100');
+      if (slide1) {
+        slide1.classList.add('kenburns-active');
+      }
     };
 
     const skipIntro = () => {
@@ -1084,10 +1139,19 @@
       // Execute immediate transition
       triggerMainReveal();
 
-      // Ensure hero content text is instantly visible in case skip clicked in Step 1
+      // Ensure hero content text is instantly visible and positioned down (translate-y-12)
       const heroContent = document.getElementById('hero-content');
-      heroContent.classList.remove('opacity-0', 'translate-y-4');
-      heroContent.classList.add('opacity-100', 'translate-y-0');
+      if (heroContent) {
+        heroContent.classList.remove('opacity-0', 'translate-y-4', 'translate-y-0');
+        heroContent.classList.add('opacity-100', 'translate-y-12');
+      }
+
+      // Make flowers visible
+      const botanicals = document.querySelectorAll('.intro-botanical');
+      botanicals.forEach(el => {
+        el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
+        el.classList.add('opacity-100');
+      });
 
       // Immediately hide overlays
       lockScreen.classList.add('hidden');
@@ -1114,6 +1178,15 @@
         
         // Force scroll to top immediately
         window.scrollTo(0, 0);
+
+        // Reset viewport zoom level dynamically
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+          setTimeout(() => {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+          }, 300);
+        }
         
         // Remove transitions from loader-screen so it reveals instantly without flashing
         loaderScreen.style.transition = 'none';
