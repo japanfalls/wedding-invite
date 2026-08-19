@@ -259,157 +259,221 @@
       <!-- Step 2 & 3: Corner Botanicals (Step 2 text is now directly rendered via #hero-content underneath) -->
       <div id="intro-step2" class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
         
-        <!-- Step 3: Premium Corner Botanicals (4 Unique, custom-drawn flower-heavy SVGs) -->
+        <!-- Step 3: Premium Corner Botanicals (4 Unique hand-drawn watercolor-style SVGs) -->
         
         <!-- Top Left Corner -->
-        <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4">
+        <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4">
           <svg viewBox="0 0 120 120" class="w-full h-full">
-            <path d="M 0 0 C 40 10 70 40 85 90" fill="none" stroke="url(#gold-grad)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 0 0 C 20 25 35 60 40 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
-            <path d="M 30 12 Q 25 35 48 40 Q 53 18 30 12 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 55 35 Q 50 58 72 60 Q 77 38 55 35 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 12 35 Q -3 55 10 65 Q 25 45 12 35 Z" fill="url(#sage-grad)" opacity="0.85" />
-            <g transform="translate(18, 18)">
-              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
-              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
-              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
-              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
-              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            <!-- Watercolor Leaves Wash (Sage) -->
+            <path d="M 10 30 C 5 45 22 55 28 42 C 34 29 25 15 10 30 Z" fill="url(#sage-grad)" opacity="0.75" />
+            <path d="M 40 18 C 30 5 50 -2 55 10 C 60 22 50 30 40 18 Z" fill="url(#sage-grad)" opacity="0.7" />
+            <path d="M 12 55 C -2 68 18 80 22 68 C 26 56 22 45 12 55 Z" fill="url(#sage-grad)" opacity="0.65" />
+            
+            <!-- Sketch Lines for Leaves -->
+            <path d="M 10 30 C 7 38 18 48 24 40 C 30 32 21 20 12 28" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 40 18 C 32 8 46 0 51 8 C 56 16 48 24 42 16" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 12 55 C 2 64 14 74 18 66 C 22 58 18 48 10 52" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            
+            <!-- Stems -->
+            <path d="M 0 0 C 15 15 35 30 35 45" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 0 0 C 25 10 55 15 65 20" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 0 0 C 10 25 18 55 20 65" stroke="#A4937A" stroke-width="0.8" fill="none" />
+
+            <!-- Tulip at Top-Center (Soft wash + Sketch lines) -->
+            <g transform="translate(68, 20) rotate(-15)">
+              <path d="M -4 -8 C -8 -20 8 -20 4 -8 C 8 2 -8 2 -4 -8 Z" fill="url(#rose-grad)" opacity="0.85" />
+              <path d="M -3 4 C -8 -2 -6 -14 0 -16 C 6 -14 8 -2 3 4" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 0 -16 C -2 -6 2 -6 0 4" stroke="#A4937A" stroke-width="0.6" fill="none" />
             </g>
-            <g transform="translate(48, 48)">
-              <path d="M 0 -6 C -4 -12 4 -12 0 -6" fill="url(#rose-grad)" />
-              <path d="M 5 -2 C 10 -6 10 1 5 -2" fill="url(#rose-grad)" />
-              <path d="M 3 5 C 7 11 -1 11 3 5" fill="url(#rose-grad)" />
-              <path d="M -3 5 C -7 11 1 11 -3 5" fill="url(#rose-grad)" />
-              <path d="M -5 -2 C -10 -6 -10 1 -5 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2.5" fill="url(#gold-grad)" />
+
+            <!-- Big Anemone Flower at Center-Left (Watercolor rose style) -->
+            <g transform="translate(35, 45)">
+              <!-- Watercolor Petal Washes -->
+              <circle cx="0" cy="0" r="14" fill="url(#rose-grad)" opacity="0.8" />
+              <circle cx="-6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="0" cy="8" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <!-- Hand-drawn outlines -->
+              <path d="M -10 -2 C -12 -12 12 -12 10 -2" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 8 -6 C 14 2 8 14 -2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M -8 -6 C -14 2 -8 14 2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <!-- Center pistil -->
+              <circle cx="0" cy="1" r="3.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="2" cy="-4" r="0.6" fill="#8C765C" />
+              <circle cx="-4" cy="-2" r="0.6" fill="#8C765C" />
+              <circle cx="4" cy="2" r="0.6" fill="#8C765C" />
+              <circle cx="-2" cy="4" r="0.6" fill="#8C765C" />
             </g>
-            <g transform="translate(75, 75)">
-              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
-              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
-              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
-              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
-              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+
+            <!-- Daisy / Small Flower at Bottom-Left -->
+            <g transform="translate(20, 72)">
+              <circle cx="0" cy="0" r="8" fill="url(#gold-grad)" opacity="0.8" />
+              <!-- Sketch Petals -->
+              <path d="M 0 0 L 0 -8 M 0 0 L 6 -6 M 0 0 L 8 0 M 0 0 L 6 6 M 0 0 L 0 8 M 0 0 L -6 6 M 0 0 L -8 0 M 0 0 L -6 -6" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="0" cy="0" r="2.5" fill="#FFFDF9" stroke="#A4937A" stroke-width="0.6" />
             </g>
-            <circle cx="28" cy="5" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="5" cy="28" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="72" cy="25" r="2" fill="url(#gold-grad)" />
           </svg>
         </div>
 
         <!-- Top Right Corner -->
-        <div id="botanical-tr" class="intro-botanical absolute top-4 right-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 -translate-y-4">
+        <div id="botanical-tr" class="intro-botanical absolute top-4 right-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 -translate-y-4">
           <svg viewBox="0 0 120 120" class="w-full h-full">
-            <path d="M 120 0 C 80 10 50 40 35 90" fill="none" stroke="url(#gold-grad)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 120 0 C 100 25 85 60 80 95" fill="none" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
-            <path d="M 90 12 Q 95 35 72 40 Q 67 18 90 12 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 65 35 Q 70 58 48 60 Q 43 38 65 35 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 108 35 Q 123 55 110 65 Q 95 45 108 35 Z" fill="url(#sage-grad)" opacity="0.85" />
-            <g transform="translate(102, 18)">
-              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
-              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
-              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
-              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
-              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            <!-- Watercolor Leaves Wash (Sage) -->
+            <path d="M 110 30 C 115 45 98 55 92 42 C 86 29 95 15 110 30 Z" fill="url(#sage-grad)" opacity="0.75" />
+            <path d="M 80 18 C 90 5 70 -2 65 10 C 60 22 70 30 80 18 Z" fill="url(#sage-grad)" opacity="0.7" />
+            <path d="M 108 55 C 122 68 102 80 98 68 C 94 56 98 45 108 55 Z" fill="url(#sage-grad)" opacity="0.65" />
+            
+            <!-- Sketch Lines for Leaves -->
+            <path d="M 110 30 C 113 38 102 48 96 40 C 90 32 99 20 108 28" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 80 18 C 88 8 74 0 69 8 C 64 16 72 24 78 16" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 108 55 C 118 64 106 74 102 66 C 98 58 102 48 110 52" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            
+            <!-- Stems -->
+            <path d="M 120 0 C 105 15 85 30 85 45" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 120 0 C 95 10 65 15 55 20" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 120 0 C 110 25 102 55 100 65" stroke="#A4937A" stroke-width="0.8" fill="none" />
+
+            <!-- Tulip at Top-Center (Soft wash + Sketch lines) -->
+            <g transform="translate(52, 20) rotate(15)">
+              <path d="M -4 -8 C -8 -20 8 -20 4 -8 C 8 2 -8 2 -4 -8 Z" fill="url(#rose-grad)" opacity="0.85" />
+              <path d="M -3 4 C -8 -2 -6 -14 0 -16 C 6 -14 8 -2 3 4" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 0 -16 C -2 -6 2 -6 0 4" stroke="#A4937A" stroke-width="0.6" fill="none" />
             </g>
-            <g transform="translate(72, 48)">
-              <path d="M 0 -6 C -4 -12 4 -12 0 -6" fill="url(#rose-grad)" />
-              <path d="M 5 -2 C 10 -6 10 1 5 -2" fill="url(#rose-grad)" />
-              <path d="M 3 5 C 7 11 -1 11 3 5" fill="url(#rose-grad)" />
-              <path d="M -3 5 C -7 11 1 11 -3 5" fill="url(#rose-grad)" />
-              <path d="M -5 -2 C -10 -6 -10 1 -5 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2.5" fill="url(#gold-grad)" />
+
+            <!-- Big Anemone Flower at Center-Right (Watercolor rose style) -->
+            <g transform="translate(85, 45)">
+              <!-- Watercolor Petal Washes -->
+              <circle cx="0" cy="0" r="14" fill="url(#rose-grad)" opacity="0.8" />
+              <circle cx="-6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="0" cy="8" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <!-- Hand-drawn outlines -->
+              <path d="M -10 -2 C -12 -12 12 -12 10 -2" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 8 -6 C 14 2 8 14 -2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M -8 -6 C -14 2 -8 14 2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <!-- Center pistil -->
+              <circle cx="0" cy="1" r="3.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="2" cy="-4" r="0.6" fill="#8C765C" />
+              <circle cx="-4" cy="-2" r="0.6" fill="#8C765C" />
+              <circle cx="4" cy="2" r="0.6" fill="#8C765C" />
+              <circle cx="-2" cy="4" r="0.6" fill="#8C765C" />
             </g>
-            <g transform="translate(45, 75)">
-              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
-              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
-              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
-              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
-              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+
+            <!-- Daisy / Small Flower at Bottom-Right -->
+            <g transform="translate(100, 72)">
+              <circle cx="0" cy="0" r="8" fill="url(#gold-grad)" opacity="0.8" />
+              <!-- Sketch Petals -->
+              <path d="M 0 0 L 0 -8 M 0 0 L 6 -6 M 0 0 L 8 0 M 0 0 L 6 6 M 0 0 L 0 8 M 0 0 L -6 6 M 0 0 L -8 0 M 0 0 L -6 -6" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="0" cy="0" r="2.5" fill="#FFFDF9" stroke="#A4937A" stroke-width="0.6" />
             </g>
-            <circle cx="92" cy="5" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="115" cy="28" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="48" cy="25" r="2" fill="url(#gold-grad)" />
           </svg>
         </div>
 
         <!-- Bottom Left Corner -->
-        <div id="botanical-bl" class="intro-botanical absolute bottom-4 left-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 translate-y-4">
+        <div id="botanical-bl" class="intro-botanical absolute bottom-4 left-4 w-36 h-36 opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 translate-y-4">
           <svg viewBox="0 0 120 120" class="w-full h-full">
-            <path d="M 0 120 C 40 110 70 80 85 30" fill="none" stroke="url(#gold-grad)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 0 120 C 20 95 35 60 40 25" fill="none" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
-            <path d="M 30 108 Q 25 85 48 80 Q 53 102 30 108 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 55 85 Q 50 62 72 60 Q 77 82 55 85 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 12 85 Q -3 65 10 55 Q 25 75 12 85 Z" fill="url(#sage-grad)" opacity="0.85" />
-            <g transform="translate(18, 102)">
-              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
-              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
-              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
-              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
-              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            <!-- Watercolor Leaves Wash (Sage) -->
+            <path d="M 10 90 C 5 75 22 65 28 78 C 34 91 25 105 10 90 Z" fill="url(#sage-grad)" opacity="0.75" />
+            <path d="M 40 102 C 30 115 50 122 55 110 C 60 98 50 90 40 102 Z" fill="url(#sage-grad)" opacity="0.7" />
+            <path d="M 12 65 C -2 52 18 40 22 52 C 26 64 22 75 12 65 Z" fill="url(#sage-grad)" opacity="0.65" />
+            
+            <!-- Sketch Lines for Leaves -->
+            <path d="M 10 90 C 7 82 18 72 24 80 C 30 88 21 100 12 92" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 40 102 C 32 112 46 120 51 112 C 56 104 48 96 42 104" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 12 65 C 2 56 14 46 18 54 C 22 62 18 72 10 68" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            
+            <!-- Stems -->
+            <path d="M 0 120 C 15 105 35 90 35 75" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 0 120 C 25 110 55 105 65 100" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 0 120 C 10 95 18 65 20 55" stroke="#A4937A" stroke-width="0.8" fill="none" />
+
+            <!-- Tulip at Bottom-Center (Soft wash + Sketch lines) -->
+            <g transform="translate(68, 100) rotate(15)">
+              <path d="M -4 -8 C -8 -20 8 -20 4 -8 C 8 2 -8 2 -4 -8 Z" fill="url(#rose-grad)" opacity="0.85" />
+              <path d="M -3 4 C -8 -2 -6 -14 0 -16 C 6 -14 8 -2 3 4" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 0 -16 C -2 -6 2 -6 0 4" stroke="#A4937A" stroke-width="0.6" fill="none" />
             </g>
-            <g transform="translate(48, 72)">
-              <path d="M 0 -6 C -4 -12 4 -12 0 -6" fill="url(#rose-grad)" />
-              <path d="M 5 -2 C 10 -6 10 1 5 -2" fill="url(#rose-grad)" />
-              <path d="M 3 5 C 7 11 -1 11 3 5" fill="url(#rose-grad)" />
-              <path d="M -3 5 C -7 11 1 11 -3 5" fill="url(#rose-grad)" />
-              <path d="M -5 -2 C -10 -6 -10 1 -5 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2.5" fill="url(#gold-grad)" />
+
+            <!-- Big Anemone Flower at Center-Left (Watercolor rose style) -->
+            <g transform="translate(35, 75)">
+              <!-- Watercolor Petal Washes -->
+              <circle cx="0" cy="0" r="14" fill="url(#rose-grad)" opacity="0.8" />
+              <circle cx="-6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="0" cy="8" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <!-- Hand-drawn outlines -->
+              <path d="M -10 -2 C -12 -12 12 -12 10 -2" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 8 -6 C 14 2 8 14 -2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M -8 -6 C -14 2 -8 14 2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <!-- Center pistil -->
+              <circle cx="0" cy="1" r="3.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="2" cy="-4" r="0.6" fill="#8C765C" />
+              <circle cx="-4" cy="-2" r="0.6" fill="#8C765C" />
+              <circle cx="4" cy="2" r="0.6" fill="#8C765C" />
+              <circle cx="-2" cy="4" r="0.6" fill="#8C765C" />
             </g>
-            <g transform="translate(75, 45)">
-              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
-              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
-              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
-              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
-              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+
+            <!-- Daisy / Small Flower at Top-Left -->
+            <g transform="translate(20, 48)">
+              <circle cx="0" cy="0" r="8" fill="url(#gold-grad)" opacity="0.8" />
+              <!-- Sketch Petals -->
+              <path d="M 0 0 L 0 -8 M 0 0 L 6 -6 M 0 0 L 8 0 M 0 0 L 6 6 M 0 0 L 0 8 M 0 0 L -6 6 M 0 0 L -8 0 M 0 0 L -6 -6" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="0" cy="0" r="2.5" fill="#FFFDF9" stroke="#A4937A" stroke-width="0.6" />
             </g>
-            <circle cx="28" cy="115" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="5" cy="92" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="72" cy="95" r="2" fill="url(#gold-grad)" />
           </svg>
         </div>
 
         <!-- Bottom Right Corner -->
         <div id="botanical-br" class="intro-botanical absolute bottom-4 right-4 w-32 h-32 opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 translate-y-4">
           <svg viewBox="0 0 120 120" class="w-full h-full">
-            <path d="M 120 120 C 80 110 50 80 35 30" fill="none" stroke="url(#gold-grad)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 120 120 C 100 95 85 60 80 25" fill="none" stroke="url(#gold-grad)" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
-            <path d="M 90 108 Q 95 85 72 80 Q 67 102 90 108 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 65 85 Q 70 62 48 60 Q 43 82 65 85 Z" fill="url(#sage-grad)" opacity="0.95" />
-            <path d="M 108 85 Q 123 65 110 55 Q 95 75 108 85 Z" fill="url(#sage-grad)" opacity="0.85" />
-            <g transform="translate(102, 102)">
-              <path d="M 0 -8 C -5 -15 5 -15 0 -8" fill="url(#rose-grad)" />
-              <path d="M 7 -3 C 14 -8 14 2 7 -3" fill="url(#rose-grad)" />
-              <path d="M 4 6 C 9 13 -1 13 4 6" fill="url(#rose-grad)" />
-              <path d="M -4 6 C -9 13 1 13 -4 6" fill="url(#rose-grad)" />
-              <path d="M -7 -3 C -14 -8 -14 2 -7 -3" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="3" fill="url(#gold-grad)" />
+            <!-- Watercolor Leaves Wash (Sage) -->
+            <path d="M 110 90 C 115 75 98 65 92 78 C 86 91 95 105 110 90 Z" fill="url(#sage-grad)" opacity="0.75" />
+            <path d="M 80 102 C 90 115 70 122 65 110 C 60 98 70 90 80 102 Z" fill="url(#sage-grad)" opacity="0.7" />
+            <path d="M 108 65 C 122 52 102 40 98 52 C 94 64 98 75 108 65 Z" fill="url(#sage-grad)" opacity="0.65" />
+            
+            <!-- Sketch Lines for Leaves -->
+            <path d="M 110 90 C 113 82 102 72 96 80 C 90 88 99 100 108 92" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 80 102 C 88 112 74 120 69 112 C 64 104 72 96 78 104" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            <path d="M 108 65 C 118 56 106 46 102 54 C 98 62 102 72 110 68" stroke="#6D735B" stroke-width="0.8" fill="none" />
+            
+            <!-- Stems -->
+            <path d="M 120 120 C 105 105 85 90 85 75" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 120 120 C 95 110 65 105 55 100" stroke="#A4937A" stroke-width="0.8" fill="none" />
+            <path d="M 120 120 C 110 95 102 65 100 55" stroke="#A4937A" stroke-width="0.8" fill="none" />
+
+            <!-- Tulip at Bottom-Center (Soft wash + Sketch lines) -->
+            <g transform="translate(52, 100) rotate(-15)">
+              <path d="M -4 -8 C -8 -20 8 -20 4 -8 C 8 2 -8 2 -4 -8 Z" fill="url(#rose-grad)" opacity="0.85" />
+              <path d="M -3 4 C -8 -2 -6 -14 0 -16 C 6 -14 8 -2 3 4" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 0 -16 C -2 -6 2 -6 0 4" stroke="#A4937A" stroke-width="0.6" fill="none" />
             </g>
-            <g transform="translate(72, 72)">
-              <path d="M 0 -6 C -4 -12 4 -12 0 -6" fill="url(#rose-grad)" />
-              <path d="M 5 -2 C 10 -6 10 1 5 -2" fill="url(#rose-grad)" />
-              <path d="M 3 5 C 7 11 -1 11 3 5" fill="url(#rose-grad)" />
-              <path d="M -3 5 C -7 11 1 11 -3 5" fill="url(#rose-grad)" />
-              <path d="M -5 -2 C -10 -6 -10 1 -5 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2.5" fill="url(#gold-grad)" />
+
+            <!-- Big Anemone Flower at Center-Right (Watercolor rose style) -->
+            <g transform="translate(85, 75)">
+              <!-- Watercolor Petal Washes -->
+              <circle cx="0" cy="0" r="14" fill="url(#rose-grad)" opacity="0.8" />
+              <circle cx="-6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="6" cy="-4" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <circle cx="0" cy="8" r="8" fill="url(#rose-grad)" opacity="0.75" />
+              <!-- Hand-drawn outlines -->
+              <path d="M -10 -2 C -12 -12 12 -12 10 -2" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M 8 -6 C 14 2 8 14 -2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <path d="M -8 -6 C -14 2 -8 14 2 10" stroke="#A4937A" stroke-width="0.8" fill="none" />
+              <!-- Center pistil -->
+              <circle cx="0" cy="1" r="3.5" fill="url(#gold-grad)" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="2" cy="-4" r="0.6" fill="#8C765C" />
+              <circle cx="-4" cy="-2" r="0.6" fill="#8C765C" />
+              <circle cx="4" cy="2" r="0.6" fill="#8C765C" />
+              <circle cx="-2" cy="4" r="0.6" fill="#8C765C" />
             </g>
-            <g transform="translate(45, 45)">
-              <path d="M 0 -5 C -3 -10 3 -10 0 -5" fill="url(#rose-grad)" />
-              <path d="M 4 -2 C 9 -5 9 1 4 -2" fill="url(#rose-grad)" />
-              <path d="M 2 4 C 5 9 -1 9 2 4" fill="url(#rose-grad)" />
-              <path d="M -2 4 C -5 9 1 9 -2 4" fill="url(#rose-grad)" />
-              <path d="M -4 -2 C -9 -5 -9 1 -4 -2" fill="url(#rose-grad)" />
-              <circle cx="0" cy="0" r="2" fill="url(#gold-grad)" />
+
+            <!-- Daisy / Small Flower at Top-Right -->
+            <g transform="translate(100, 48)">
+              <circle cx="0" cy="0" r="8" fill="url(#gold-grad)" opacity="0.8" />
+              <!-- Sketch Petals -->
+              <path d="M 0 0 L 0 -8 M 0 0 L 6 -6 M 0 0 L 8 0 M 0 0 L 6 6 M 0 0 L 0 8 M 0 0 L -6 6 M 0 0 L -8 0 M 0 0 L -6 -6" stroke="#A4937A" stroke-width="0.8" />
+              <circle cx="0" cy="0" r="2.5" fill="#FFFDF9" stroke="#A4937A" stroke-width="0.6" />
             </g>
-            <circle cx="92" cy="115" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="115" cy="92" r="2.5" fill="url(#gold-grad)" />
-            <circle cx="48" cy="95" r="2" fill="url(#gold-grad)" />
           </svg>
         </div>
 
@@ -422,17 +486,7 @@
     </div>
   </div>
 
-  <!-- BGM Equalizer Overlay Button (ON/OFF Control Floating bottom-left) -->
-  <button id="bgm-toggle" class="fixed bottom-6 left-6 z-30 w-11 h-11 rounded-full glass flex items-center justify-center text-sage-deep hover:text-gold transition-all duration-300 shadow-md active:scale-[0.95] pointer-events-none opacity-0">
-    <!-- Icon or Equalizer animations -->
-    <div id="equalizer-bars" class="flex items-end justify-center space-x-0.5 w-5 h-4 hidden">
-      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.1s;"></div>
-      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.4s;"></div>
-      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.2s;"></div>
-      <div class="w-[2px] bg-gold animate-music-equalizer" style="animation-delay: 0.5s;"></div>
-    </div>
-    <i id="bgm-mute-icon" class="fa-solid fa-volume-xmark text-xs text-gold/80"></i>
-  </button>
+<!-- BGM Overlay Button Removed -->
 
   <!-- BG Subtle Botanical Pattern (Top Right & Bottom Left) -->
   <div class="fixed top-0 right-0 w-72 h-72 opacity-[0.03] pointer-events-none select-none z-0">
@@ -472,10 +526,7 @@
         <i class="fa-solid fa-bars text-sm"></i>
       </a>
 
-      <!-- Tiny Top Header -->
-      <div class="pt-6 tracking-[0.3em] text-[10px] text-sage-dark uppercase font-light z-10">
-        Wedding Invitation
-      </div>
+<!-- Tiny Top Header Removed -->
 
       <!-- Main Decorative Hero Elements -->
       <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1500ms] opacity-0 translate-y-4">
@@ -1006,11 +1057,6 @@
     // ----------------------------------------------------
     // 0. SECURITY PASSWORD GATE & INTRO FLOW
     // ----------------------------------------------------
-    const bgmPlayer = document.getElementById('bgm-player');
-    const bgmToggle = document.getElementById('bgm-toggle');
-    const equalizerBars = document.getElementById('equalizer-bars');
-    const bgmMuteIcon = document.getElementById('bgm-mute-icon');
-
     const lockScreen = document.getElementById('lock-screen');
     const loaderScreen = document.getElementById('loader-screen');
     const passwordInput = document.getElementById('password-input');
@@ -1098,9 +1144,6 @@
       if (loaderBg) {
         loaderBg.classList.replace('opacity-100', 'opacity-0');
       }
-      
-      // Make BGM toggle floating button visible
-      bgmToggle.classList.remove('opacity-0', 'pointer-events-none');
 
       // Trigger Ken Burns slow zoom-in on the active slide
       const slide1 = document.getElementById('slide-1');
@@ -1125,17 +1168,6 @@
       // Cancel all pending timeouts
       introTimeouts.forEach(clearTimeout);
       introTimeouts = [];
-
-      // Force play BGM if browser lets us
-      if (bgmPlayer.paused) {
-        bgmPlayer.play().then(() => {
-          equalizerBars.classList.remove('hidden');
-          bgmMuteIcon.classList.add('hidden');
-          bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
-        }).catch(err => {
-          console.warn("BGM autoplay was blocked by browser configuration:", err);
-        });
-      }
 
       // Execute immediate transition
       triggerMainReveal();
@@ -1172,15 +1204,6 @@
         loaderScreen.style.transition = 'none';
         
         lockScreen.classList.add('opacity-0', 'pointer-events-none');
-        
-        // Setup BGM play (interaction allows this now)
-        bgmPlayer.play().then(() => {
-          equalizerBars.classList.remove('hidden');
-          bgmMuteIcon.classList.add('hidden');
-          bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
-        }).catch(err => {
-          console.warn("BGM autoplay was blocked by browser configuration:", err);
-        });
 
         // Start premium 4-stage intro animation
         startIntroAnimation();
@@ -1205,21 +1228,6 @@
     // Focus input on load
     window.addEventListener('load', () => {
       passwordInput.focus();
-    });
-
-    // Manual BGM Toggle click handler
-    bgmToggle.addEventListener('click', () => {
-      if (bgmPlayer.paused) {
-        bgmPlayer.play();
-        equalizerBars.classList.remove('hidden');
-        bgmMuteIcon.classList.add('hidden');
-        bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
-      } else {
-        bgmPlayer.pause();
-        equalizerBars.classList.add('hidden');
-        bgmMuteIcon.classList.remove('hidden');
-        bgmToggle.classList.remove('animate-[spin_8s_linear_infinite]');
-      }
     });
 
 
