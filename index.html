@@ -168,8 +168,8 @@
       <!-- Step 1: The Beginning of Our Story (Font style changed to clean display italic with responsive sizing) -->
       <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
         <div class="flex flex-col items-center text-center">
-          <span id="type-part1" class="font-script text-2xl sm:text-3xl text-charcoal tracking-wide mb-1 select-none opacity-0 transition-opacity duration-300"></span>
-          <span id="type-part2" class="font-script gold-text-premium text-4xl sm:text-5xl font-semibold tracking-wide select-none opacity-0 transition-opacity duration-300 relative inline-block py-4 leading-relaxed"></span>
+          <span id="type-part1" class="font-script text-sm sm:text-base text-charcoal/70 tracking-wide mb-2 select-none opacity-0 transition-opacity duration-300"></span>
+          <span id="type-part2" class="font-script gold-text-premium text-5xl sm:text-6xl font-semibold tracking-wide select-none opacity-0 transition-opacity duration-300 relative inline-block py-6 leading-loose"></span>
         </div>
       </div>
 
@@ -213,22 +213,24 @@
 <!-- Tiny Top Header Removed -->
 
       <!-- Main Decorative Hero Elements -->
-      <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1200ms] ease-in-out opacity-0 translate-y-4">
+      <div id="hero-content" class="mt-auto mb-20 flex flex-col items-center py-8 z-10 transition-all duration-[1200ms] ease-in-out opacity-0 translate-y-4">
         
         <!-- Script font top accent -->
-        <p class="font-script text-6xl sm:text-7xl text-white font-normal mb-4 select-none write-reveal-text">Wedding Invitation</p>
+        <p class="font-script text-6xl sm:text-7xl text-white font-normal mb-4 select-none invitation-title-fonts">
+          <span class="write-reveal-wedding">Wedding</span> <span class="write-reveal-invitation">Invitation</span>
+        </p>
 
         <!-- Bride & Groom Names -->
-        <h1 class="font-display text-xl sm:text-2xl text-white font-semibold tracking-wider mb-2 hero-fade-in-delayed">
-          Ei <span class="text-white/80 font-light font-serif">&amp;</span> Mahiro
+        <h1 class="font-display text-2xl sm:text-3xl text-white font-medium tracking-[0.15em] mb-3 hero-fade-in-delayed">
+          Ei &amp; Mahiro
         </h1>
 
         <!-- Venue & Date -->
-        <p class="text-sm font-light text-white tracking-widest mt-4 uppercase font-display hero-fade-in-delayed">
-          2027.10.11 <span class="text-xs text-white/90 font-serif">Monday</span>
+        <p class="text-xs sm:text-sm font-light text-white/95 tracking-[0.2em] mt-5 uppercase font-display hero-fade-in-delayed">
+          2027.10.11 <span class="italic text-xs text-white/80 font-serif">Monday</span>
         </p>
-        <p class="text-[11px] text-white/90 tracking-wider mt-2 font-light hero-fade-in-delayed">
-          at Botanical House Tokyo
+        <p class="text-[10px] sm:text-xs text-white/90 tracking-[0.15em] mt-2.5 font-light uppercase font-display hero-fade-in-delayed">
+          Botanical House Tokyo
         </p>
       </div>
     </header>

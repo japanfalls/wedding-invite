@@ -74,14 +74,14 @@ const startIntroAnimation = () => {
   step1.classList.remove('opacity-0', 'pointer-events-none');
   step1.classList.add('opacity-100');
 
-  // Start typing Part 1: "The Beginning of"
-  typeWriter(typePart1, "The Beginning of", 50, () => {
-    // Once Part 1 is done typing, start Part 2: "Our Story"
-    typeWriter(typePart2, "Our Story", 75, () => {
+  // Start typing Part 1: "The Beginning of" (Slower typing speed)
+  typeWriter(typePart1, "The Beginning of", 75, () => {
+    // Once Part 1 is done typing, start Part 2: "Our Story" (Slower typing speed)
+    typeWriter(typePart2, "Our Story", 110, () => {
       // Once Part 2 is done typing, trigger Glint/Shine animation
       typePart2.classList.add('shine-effect');
 
-      // Wait 1.5 seconds, then fade out Step 1
+      // Wait 2.2 seconds (longer glint pause), then fade out Step 1
       introTimeouts.push(setTimeout(() => {
         step1.classList.remove('opacity-100');
         step1.classList.add('opacity-0');
@@ -99,15 +99,15 @@ const startIntroAnimation = () => {
           heroContent.classList.remove('opacity-0', 'translate-y-4');
           heroContent.classList.add('opacity-100', 'translate-y-24');
 
-          // Cleanup: Completely hide loader and lock screen (6000ms after reveal)
+          // Cleanup: Completely hide loader and lock screen (8000ms after reveal)
           introTimeouts.push(setTimeout(() => {
             lockScreen.classList.add('hidden');
             loaderScreen.classList.add('hidden');
             if (loaderBg) loaderBg.classList.add('hidden');
-          }, 6000));
-        }, 1000)); // Time between Step 1 fadeout and Step 2 text fadein
+          }, 8000));
+        }, 1500)); // Time between Step 1 fadeout and Step 2 text fadein
 
-      }, 1500)); // Time for Glint animation to display and be read
+      }, 2200)); // Time for Glint animation to display and be read
 
     });
   });
