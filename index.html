@@ -208,6 +208,14 @@
         left: 150%;
       }
     }
+
+    /* Premium high-class gold gradient color for text */
+    .gold-text-premium {
+      background: linear-gradient(135deg, #F3E0B5 0%, #B8934A 50%, #8A6521 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #B8934A; /* Fallback */
+    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-sage/20 selection:text-sage-deep overflow-x-hidden">
@@ -242,7 +250,7 @@
         </button>
       </div>
       
-      <p class="text-[9px] text-sage-dark/60 font-light pt-6 text-center leading-relaxed">※パスワードが分からない場合は<br>新郎新婦へお問い合わせください。</p>
+      <p class="text-[9px] text-sage-dark/60 font-light pt-6 text-center leading-relaxed">パスワードが分からない場合は<br>新郎新婦へお問い合わせください。</p>
     </div>
   </div>
 
@@ -279,8 +287,8 @@
       <!-- Step 1: The Beginning of Our Story (Font style changed to clean display italic with responsive sizing) -->
       <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
         <div class="flex flex-col items-center text-center">
-          <span id="type-part1" class="text-xs sm:text-sm text-charcoal font-light tracking-[0.2em] mb-2 select-none opacity-0 transition-opacity duration-300"></span>
-          <span id="type-part2" class="font-display italic text-3xl sm:text-4xl text-gold font-semibold tracking-[0.1em] select-none opacity-0 transition-opacity duration-300 relative inline-block"></span>
+          <span id="type-part1" class="font-script text-2xl sm:text-3xl text-charcoal tracking-wide mb-1 select-none opacity-0 transition-opacity duration-300"></span>
+          <span id="type-part2" class="font-script gold-text-premium text-4xl sm:text-5xl font-semibold tracking-wide select-none opacity-0 transition-opacity duration-300 relative inline-block"></span>
         </div>
       </div>
 
