@@ -167,6 +167,19 @@
     .nav-bar {
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     }
+
+    /* Ken Burns Slow Zoom Effect */
+    .kenburns-active {
+      animation: kenBurnsSlow 8s ease-out forwards;
+    }
+    @keyframes kenBurnsSlow {
+      0% {
+        transform: scale(1.02);
+      }
+      100% {
+        transform: scale(1.12);
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-sage/20 selection:text-sage-deep overflow-x-hidden">
@@ -209,20 +222,57 @@
   <!-- ========================================== -->
   <!-- 0-B. INTRO LOADER SCREEN -->
   <!-- ========================================== -->
-  <div id="loader-screen" class="fixed inset-0 bg-ivory z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 ease-in-out">
-    <div class="text-center space-y-6 px-8 max-w-xs">
+  <div id="loader-screen" class="fixed inset-0 bg-ivory z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 ease-in-out cursor-pointer select-none">
+    
+    <!-- Step 1: The Beginning of Our Story -->
+    <div id="intro-step1" class="absolute inset-0 flex items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
+      <p class="font-serif italic text-2xl sm:text-3xl text-sage-dark tracking-[0.15em] text-center whitespace-nowrap">
+        The Beginning of Our Story
+      </p>
+    </div>
+
+    <!-- Step 2 & 3: Wedding Invitation & Corner Botanicals -->
+    <div id="intro-step2" class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-[800ms] opacity-0 pointer-events-none px-6">
       
-      <!-- Leaf Line Drawing SVG -->
-      <svg id="loader-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-24 h-24 text-gold mx-auto fill-none stroke-current stroke-[1.5]">
-        <path d="M50 15 C40 30 35 48 50 85 C65 48 60 30 50 15 Z" class="draw-path" style="stroke-dasharray: 400; stroke-dashoffset: 400;"></path>
-        <path d="M50 35 Q35 40 25 50 Q42 45 50 35 Z" class="draw-path-delay-1" style="stroke-dasharray: 100; stroke-dashoffset: 100;"></path>
-        <path d="M50 45 Q65 50 75 60 Q58 55 50 45 Z" class="draw-path-delay-2" style="stroke-dasharray: 100; stroke-dashoffset: 100;"></path>
-      </svg>
-      
-      <div id="loader-text" class="space-y-2 opacity-0 transition-all duration-[1500ms] translate-y-2">
-        <h2 class="font-script text-3xl text-gold-accent tracking-wider">Welcome to Our Wedding</h2>
-        <p class="font-display text-xs text-sage-dark tracking-[0.25em] uppercase">Ei &amp; Mahiro</p>
+      <!-- Step 3: Corner botanicals (Delicate leaf SVGs) -->
+      <!-- Top Left -->
+      <div class="intro-botanical absolute top-8 left-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform -rotate-45">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+        </svg>
       </div>
+      <!-- Top Right -->
+      <div class="intro-botanical absolute top-8 right-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform rotate-45">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+        </svg>
+      </div>
+      <!-- Bottom Left -->
+      <div class="intro-botanical absolute bottom-8 left-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform -rotate-135">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+        </svg>
+      </div>
+      <!-- Bottom Right -->
+      <div class="intro-botanical absolute bottom-8 right-8 w-16 h-16 text-gold/30 opacity-0 transition-opacity duration-1000 transform rotate-135">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
+        </svg>
+      </div>
+
+      <!-- Step 2 Texts -->
+      <div class="text-center space-y-4">
+        <p class="font-script text-4xl text-gold-accent tracking-wider">Wedding Invitation</p>
+        <p class="font-display text-xl text-sage-dark tracking-[0.2em] uppercase whitespace-nowrap">Ei &amp; Mahiro</p>
+        <div class="h-[1px] w-16 bg-gold/30 mx-auto my-1"></div>
+        <p class="text-[10px] text-sage-dark/80 tracking-[0.3em] uppercase">村上 瑛 ＆ 横田 真潤</p>
+        <p class="text-[11px] font-display text-charcoal/70 tracking-widest mt-1">2027.10.11</p>
+      </div>
+    </div>
+
+    <!-- Skip Hint Overlay -->
+    <div id="intro-skip-hint" class="absolute bottom-10 left-0 right-0 text-center pointer-events-none transition-all duration-[800ms] opacity-0">
+      <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light">Tap to Skip</p>
     </div>
   </div>
 
@@ -260,7 +310,7 @@
       
       <!-- Slide background images -->
       <div class="absolute inset-0 z-0">
-        <div id="slide-1" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-100 scale-105" style="background-image: url('images/hero1.jpg');"></div>
+        <div id="slide-1" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-100" style="background-image: url('images/hero1.jpg');"></div>
         <div id="slide-2" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-0" style="background-image: url('images/hero2.jpg');"></div>
         <div id="slide-3" class="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] opacity-0" style="background-image: url('images/hero3.jpg');"></div>
         
@@ -279,7 +329,7 @@
       </div>
 
       <!-- Main Decorative Hero Elements -->
-      <div class="my-auto flex flex-col items-center py-8 z-10">
+      <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1500ms] opacity-0 translate-y-4">
         
         <!-- Botanical Ring Wreath SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-20 h-20 text-gold/70 mb-6 draw-svg fill-none stroke-current stroke-[1.5] animate-float-slow">
@@ -310,7 +360,7 @@
       </div>
 
       <!-- Countdown Widget -->
-      <div class="w-full glass rounded-3xl p-5 shadow-sm border border-sage/10 mb-6 z-10">
+      <div id="hero-countdown" class="w-full glass rounded-3xl p-5 shadow-sm border border-sage/10 mb-6 z-10 transition-all duration-[1500ms] opacity-0 translate-y-4">
         <p class="text-[9px] tracking-[0.25em] text-sage-dark uppercase font-light mb-3">Our Wedding Day Countdown</p>
         <div class="grid grid-cols-4 gap-2 text-center">
           <div class="flex flex-col">
@@ -333,7 +383,7 @@
       </div>
 
       <!-- Scroll Indicator with modern animating line -->
-      <div class="flex flex-col items-center text-sage-dark transition-colors duration-300 z-10 pb-2">
+      <div id="hero-scroll" class="flex flex-col items-center text-sage-dark transition-all duration-[1500ms] opacity-0 z-10 pb-2">
         <span class="text-[8px] tracking-[0.25em] uppercase font-light mb-3">Scroll</span>
         <div class="w-[1px] h-10 bg-gold/30 relative overflow-hidden">
           <div class="absolute w-full bg-gold top-0 h-0 animate-scroll-down"></div>
@@ -820,6 +870,114 @@
     const passwordFormContainer = document.getElementById('password-form-container');
 
     // Handle gate password verification
+    let introTimeouts = [];
+    let introSkipped = false;
+
+    const startIntroAnimation = () => {
+      // Make loader screen pointer events active
+      loaderScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+      loaderScreen.classList.add('opacity-100', 'pointer-events-auto');
+
+      const step1 = document.getElementById('intro-step1');
+      const step2 = document.getElementById('intro-step2');
+      const botanicals = document.querySelectorAll('.intro-botanical');
+      const skipHint = document.getElementById('intro-skip-hint');
+
+      // Step 1: The Beginning of Our Story fades in (0ms)
+      step1.classList.remove('opacity-0', 'pointer-events-none');
+      step1.classList.add('opacity-100');
+
+      // Step 1: Fades out (1400ms)
+      introTimeouts.push(setTimeout(() => {
+        step1.classList.remove('opacity-100');
+        step1.classList.add('opacity-0');
+      }, 1400));
+
+      // Step 2 & 3: Wedding Invitation & Corner Botanicals fade in (2000ms)
+      introTimeouts.push(setTimeout(() => {
+        step2.classList.remove('opacity-0', 'pointer-events-none');
+        step2.classList.add('opacity-100');
+        
+        botanicals.forEach(el => {
+          el.classList.remove('opacity-0');
+          el.classList.add('opacity-100');
+        });
+
+        skipHint.classList.remove('opacity-0');
+        skipHint.classList.add('opacity-40');
+      }, 2000));
+
+      // Step 4: Start transition to main content (3800ms)
+      introTimeouts.push(setTimeout(() => {
+        triggerMainReveal();
+      }, 3800));
+
+      // Cleanup: Completely hide loader and lock screen (5300ms)
+      introTimeouts.push(setTimeout(() => {
+        lockScreen.classList.add('hidden');
+        loaderScreen.classList.add('hidden');
+      }, 5300));
+    };
+
+    const triggerMainReveal = () => {
+      // Fade out loader screen
+      loaderScreen.classList.remove('opacity-100');
+      loaderScreen.classList.add('opacity-0', 'pointer-events-none');
+      
+      // Make BGM toggle floating button visible
+      bgmToggle.classList.remove('opacity-0', 'pointer-events-none');
+
+      // Trigger Ken Burns slow zoom-in on the active slide
+      const slide1 = document.getElementById('slide-1');
+      slide1.classList.add('kenburns-active');
+
+      // Smoothly fade/slide in main hero elements
+      const heroContent = document.getElementById('hero-content');
+      const heroCountdown = document.getElementById('hero-countdown');
+      const heroScroll = document.getElementById('hero-scroll');
+
+      heroContent.classList.remove('opacity-0', 'translate-y-4');
+      heroContent.classList.add('opacity-100', 'translate-y-0');
+
+      heroCountdown.classList.remove('opacity-0', 'translate-y-4');
+      heroCountdown.classList.add('opacity-100', 'translate-y-0');
+
+      heroScroll.classList.remove('opacity-0');
+      heroScroll.classList.add('opacity-100');
+    };
+
+    const skipIntro = () => {
+      if (introSkipped) return;
+      introSkipped = true;
+
+      // Cancel all pending timeouts
+      introTimeouts.forEach(clearTimeout);
+      introTimeouts = [];
+
+      // Force play BGM if browser lets us
+      if (bgmPlayer.paused) {
+        bgmPlayer.play().then(() => {
+          equalizerBars.classList.remove('hidden');
+          bgmMuteIcon.classList.add('hidden');
+          bgmToggle.classList.add('animate-[spin_8s_linear_infinite]');
+        }).catch(err => {
+          console.warn("BGM autoplay was blocked by browser configuration:", err);
+        });
+      }
+
+      // Execute immediate transition
+      triggerMainReveal();
+
+      // Immediately hide overlays
+      lockScreen.classList.add('hidden');
+      loaderScreen.classList.add('hidden');
+      loaderScreen.classList.remove('opacity-100');
+      loaderScreen.classList.add('opacity-0', 'pointer-events-none');
+    };
+
+    // Register click event on the entire loader screen to skip intro
+    loaderScreen.addEventListener('click', skipIntro);
+
     const verifyPassword = () => {
       const inputVal = passwordInput.value.trim();
       
@@ -837,30 +995,8 @@
           console.warn("BGM autoplay was blocked by browser configuration:", err);
         });
 
-        // Trigger loader animation
-        loaderScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-        loaderScreen.classList.add('opacity-100');
-        
-        // Start SVG drawing
-        document.getElementById('loader-svg').classList.add('active-draw');
-        
-        // Fade in loader text
-        setTimeout(() => {
-          const loaderText = document.getElementById('loader-text');
-          loaderText.classList.remove('opacity-0');
-          loaderText.classList.add('opacity-100', 'translate-y-0');
-        }, 800);
-
-        // Auto transition to main content after animation
-        setTimeout(() => {
-          loaderScreen.classList.add('opacity-0', 'pointer-events-none');
-          bgmToggle.classList.remove('opacity-0', 'pointer-events-none');
-          
-          setTimeout(() => {
-            lockScreen.classList.add('hidden');
-            loaderScreen.classList.add('hidden');
-          }, 1000);
-        }, 3200);
+        // Start premium 4-stage intro animation
+        startIntroAnimation();
 
       } else {
         // Password incorrect -> Shake animation feedback
@@ -913,6 +1049,7 @@
       
       currentEl.classList.replace('opacity-100', 'opacity-0');
       currentEl.classList.remove('scale-105');
+      currentEl.classList.remove('kenburns-active');
       
       nextEl.classList.replace('opacity-0', 'opacity-100');
       nextEl.classList.add('scale-105');
