@@ -301,18 +301,6 @@
 
 <!-- BGM Overlay Button Removed -->
 
-  <!-- BG Subtle Botanical Pattern (Top Right & Bottom Left) -->
-  <div class="fixed top-0 right-0 w-72 h-72 opacity-[0.03] pointer-events-none select-none z-0">
-    <svg viewBox="0 0 100 100" fill="currentColor" class="text-sage-deep">
-      <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-    </svg>
-  </div>
-  <div class="fixed bottom-0 left-0 w-72 h-72 opacity-[0.03] pointer-events-none select-none z-0">
-    <svg viewBox="0 0 100 100" fill="currentColor" class="text-sage-deep" transform="rotate(180 50 50)">
-      <path d="M10,90 Q30,60 70,50 T90,10 Q60,30 50,70 T10,90 M40,65 Q50,45 75,40 Q55,50 40,65" />
-    </svg>
-  </div>
-
   <!-- Main Outer Container -->
   <div class="max-w-md mx-auto min-h-screen shadow-2xl bg-ivory relative overflow-x-hidden border-x border-sage-light/40 flex flex-col z-10">
 
@@ -334,12 +322,7 @@
         <div id="loader-bg" class="absolute inset-0 bg-ivory z-10 transition-opacity duration-1000 opacity-100"></div>
       </div>
 
-      <!-- Premium Corner Botanicals (Attached to Hero Section for scrolling) -->
-      <!-- Top Left Corner: Cropped Hand-drawn Flower Border (Left Part) -->
-      <div id="botanical-tl" class="intro-botanical absolute top-4 left-4 w-40 h-40 rounded-full border border-gold/15 shadow-sm opacity-0 transition-all duration-[1200ms] ease-out transform -translate-x-4 -translate-y-4 z-20 pointer-events-none overflow-hidden bg-no-repeat" style="background-image: url('images/flowers-source.jpg'); background-position: 12% 50%; background-size: auto 110%; background-color: #FDFBF7;"></div>
 
-      <!-- Bottom Right Corner: Cropped Hand-drawn Flower Border (Right Part) -->
-      <div id="botanical-br" class="intro-botanical absolute bottom-4 right-4 w-40 h-40 rounded-full border border-gold/15 shadow-sm opacity-0 transition-all duration-[1200ms] ease-out transform translate-x-4 translate-y-4 z-20 pointer-events-none overflow-hidden bg-no-repeat" style="background-image: url('images/flowers-source.jpg'); background-position: 88% 50%; background-size: auto 110%; background-color: #FDFBF7;"></div>
 
       <!-- Floating Nav Button (Top Right) -->
       <a href="#menu-overlay" id="menu-trigger" class="absolute top-6 right-6 z-30 w-10 h-10 rounded-full glass flex items-center justify-center text-sage-deep hover:text-gold transition-colors duration-300">
@@ -351,13 +334,8 @@
       <!-- Main Decorative Hero Elements -->
       <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1200ms] ease-in-out opacity-0 translate-y-4">
         
-        <!-- Botanical Ring Wreath SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-20 h-20 text-gold/70 mb-6 draw-svg fill-none stroke-current stroke-[1.5] animate-float-slow">
-          <path d="M50 12 A38 38 0 1 1 49.9 12 Z" class="draw-path" style="stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw 3s ease forwards 0.5s;"></path>
-          <path d="M50 12 C52 8, 48 4, 50 0 C47 4, 48 8, 50 12 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1s;"></path>
-          <path d="M22 28 C18 24, 15 26, 11 23 C15 28, 18 29, 22 28 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1.2s;"></path>
-          <path d="M78 28 C82 24, 85 26, 89 23 C85 28, 82 29, 78 28 Z" class="draw-path" style="stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 2s ease forwards 1.4s;"></path>
-        </svg>
+        <!-- Elegant minimalist spacer -->
+        <div class="h-[1px] w-12 bg-gold/40 mb-6"></div>
         
         <!-- Script font top accent -->
         <p class="font-script text-5xl sm:text-6xl text-gold-accent mb-4 transition-all duration-[1200ms] ease-in-out">Wedding Invitation</p>
@@ -420,10 +398,8 @@
         <span class="font-script text-3xl text-gold-accent tracking-wider block mb-1">Greeting</span>
         <h2 class="text-lg text-charcoal font-medium tracking-widest mb-8">ごあいさつ</h2>
 
-        <!-- Botanical Decorative Top Accent -->
-        <svg viewBox="0 0 100 20" class="w-24 h-6 mx-auto text-sage/40 mb-8" fill="currentColor">
-          <path d="M50,10 Q60,5 75,5 T100,5 Q80,10 65,10 T50,10 M50,10 Q40,5 25,5 T0,5 Q20,10 35,10 T50,10" />
-        </svg>
+        <!-- Minimalist Divider -->
+        <div class="h-[1px] w-16 bg-gold/30 mx-auto mb-8"></div>
 
         <!-- Message Body -->
         <div class="text-xs leading-8 text-charcoal/90 font-light space-y-6 text-justify sm:text-center">
@@ -919,18 +895,11 @@
       const step1 = document.getElementById('intro-step1');
       const typePart1 = document.getElementById('type-part1');
       const typePart2 = document.getElementById('type-part2');
-      const botanicals = document.querySelectorAll('.intro-botanical');
       const heroContent = document.getElementById('hero-content');
 
       // Make sure initial state of hero content is clean (no translate-y-12, no opacity-100)
       heroContent.classList.remove('opacity-100', 'translate-y-12', 'translate-y-0');
       heroContent.classList.add('opacity-0', 'translate-y-4');
-
-      // Ensure botanicals are hidden initially
-      botanicals.forEach(el => {
-        el.classList.remove('opacity-100');
-        el.classList.add('opacity-0');
-      });
 
       // Show step1 container
       step1.classList.remove('opacity-0', 'pointer-events-none');
@@ -958,18 +927,12 @@
               heroContent.classList.remove('opacity-0', 'translate-y-4');
               heroContent.classList.add('opacity-100', 'translate-y-0');
 
-              // Step 3: Slide down the text and simultaneously fade in Left-Top and Right-Bottom flowers
+              // Step 3: Slide down the text
               introTimeouts.push(setTimeout(() => {
                 // Slide down by 3 characters (approx 48px via translate-y-12)
                 heroContent.classList.replace('translate-y-0', 'translate-y-12');
-
-                // Fade in Left-Top and Right-Bottom flowers
-                botanicals.forEach(el => {
-                  el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
-                  el.classList.add('opacity-100');
-                });
                 
-                // Step 4: After slide down and flowers fade in complete, fade out solid white loader background to slowly reveal background photo (Ken Burns)
+                // Step 4: After slide down complete, fade out solid white loader background to slowly reveal background photo (Ken Burns)
                 introTimeouts.push(setTimeout(() => {
                   triggerMainReveal();
                 }, 1500));
@@ -1030,12 +993,7 @@
         heroContent.classList.add('opacity-100', 'translate-y-12');
       }
 
-      // Make flowers visible
-      const botanicals = document.querySelectorAll('.intro-botanical');
-      botanicals.forEach(el => {
-        el.classList.remove('opacity-0', '-translate-x-4', '-translate-y-4', 'translate-x-4', 'translate-y-4');
-        el.classList.add('opacity-100');
-      });
+
 
       // Immediately hide overlays
       lockScreen.classList.add('hidden');
