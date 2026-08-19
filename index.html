@@ -96,132 +96,8 @@
     }
   </script>
 
-  <style>
-    body {
-      font-family: 'Noto Serif JP', 'Cormorant Garamond', serif;
-      background-color: #F6F3EC;
-      color: #2D322B;
-    }
-    
-    .text-serif-playfair {
-      font-family: 'Playfair Display', 'Noto Serif JP', serif;
-    }
-
-    .glass {
-      background: rgba(253, 251, 247, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(143, 151, 121, 0.15);
-    }
-
-    /* Custom fade-in style for scroll animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Elegant gold border framing */
-    .gold-frame {
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 6px;
-      position: relative;
-    }
-    .gold-frame::before {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      pointer-events: none;
-    }
-
-    /* SVG Stroke Drawing Animation triggers when active */
-    .draw-svg path {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-    }
-    .reveal.active .draw-svg path {
-      animation: draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    /* SVG drawing inside intro loader screen */
-    .active-draw .draw-path {
-      animation: draw 2s ease forwards;
-    }
-    .active-draw .draw-path-delay-1 {
-      animation: draw 2s ease forwards 0.4s;
-    }
-    .active-draw .draw-path-delay-2 {
-      animation: draw 2s ease forwards 0.7s;
-    }
-
-    /* Floating navigation bar */
-    .nav-bar {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-    }
-
-    /* Ken Burns Slow Zoom Effect */
-    .kenburns-active {
-      animation: kenBurnsSlow 8s ease-out forwards;
-    }
-    @keyframes kenBurnsSlow {
-      0% {
-        transform: scale(1.02);
-      }
-      100% {
-        transform: scale(1.12);
-      }
-    }
-
-    /* Shine effect for typing animation */
-    .shine-effect {
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-    }
-    .shine-effect::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -150%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      transform: skewX(-25deg);
-      animation: shineGlint 1.2s ease-in-out forwards;
-    }
-    @keyframes shineGlint {
-      100% {
-        left: 150%;
-      }
-    }
-
-    /* Premium high-class gold gradient color for text */
-    .gold-text-premium {
-      background: linear-gradient(135deg, #F3E0B5 0%, #B8934A 50%, #8A6521 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: #B8934A; /* Fallback */
-    }
-
-    /* Premium text shadow to ensure perfect readability of white text on photo backgrounds */
-    .text-shadow-premium {
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+  <!-- Custom animations and premium styling externalized -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen selection:bg-sage/20 selection:text-sage-deep overflow-x-hidden">
 
@@ -340,10 +216,10 @@
       <div id="hero-content" class="my-auto flex flex-col items-center py-8 z-10 transition-all duration-[1200ms] ease-in-out opacity-0 translate-y-4 text-gold-accent">
         
         <!-- Script font top accent -->
-        <p class="font-script text-6xl sm:text-7xl text-gold-accent font-bold mb-4 select-none">Wedding Invitation</p>
+        <p class="font-script text-6xl sm:text-7xl text-gold-accent font-bold mb-4 select-none invitation-title hero-title-transition">Wedding Invitation</p>
 
         <!-- Bride & Groom Names -->
-        <h1 class="font-display text-xl sm:text-2xl text-gold-accent font-semibold tracking-wider mb-2">
+        <h1 class="font-display text-xl sm:text-2xl text-gold-accent font-semibold tracking-wider mb-2 invitation-names hero-title-transition">
           Ei <span class="text-gold-accent/80 font-light font-serif">&amp;</span> Mahiro
         </h1>
 
@@ -606,23 +482,23 @@
       <!-- Photo Grid -->
       <div class="grid grid-cols-2 gap-3.5" id="gallery-grid">
         <div class="col-span-2 overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-[16/10] relative">
-          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
           <img src="images/hero2.jpg" alt="Wedding Walk" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
         <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
-          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
           <img src="images/hero1.jpg" alt="Venue Decoration" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
         <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
-          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
           <img src="images/hero3.jpg" alt="Rings and Bouquet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
         <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
-          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
           <img src="images/groom.jpg" alt="Groom" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
         <div class="overflow-hidden rounded-3xl shadow-sm group cursor-pointer aspect-square relative">
-          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+          <div class="absolute inset-0 bg-charcoal/10 z-10 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
           <img src="images/bride.jpg" alt="Bride" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         </div>
       </div>
@@ -690,7 +566,7 @@
           </div>
 
           <!-- Companions Selection -->
-          <div class="space-y-3">
+          <div id="companion-wrapper" class="space-y-3">
             <label class="block text-xs font-semibold text-sage-deep tracking-wider">ご同伴者様の有無</label>
             <div class="flex items-center space-x-6">
               <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
@@ -718,7 +594,7 @@
           </div>
 
           <!-- Allergies Info -->
-          <div class="space-y-3">
+          <div id="allergy-wrapper" class="space-y-3">
             <label class="block text-xs font-semibold text-sage-deep tracking-wider">食物アレルギーの有無</label>
             <div class="flex items-center space-x-6">
               <label class="flex items-center space-x-2 text-xs text-charcoal cursor-pointer">
@@ -798,9 +674,20 @@
     <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl focus:outline-none hover:text-gold transition duration-300" aria-label="閉じる">
       <i class="fa-solid fa-xmark"></i>
     </button>
+    
+    <!-- Prev Button -->
+    <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 text-white/80 hover:text-white flex items-center justify-center focus:outline-none transition duration-300 z-10" aria-label="前へ">
+      <i class="fa-solid fa-chevron-left text-lg"></i>
+    </button>
+
     <div class="max-w-[90%] max-h-[80vh] p-4 relative" id="lightbox-img-parent">
       <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-[75vh] rounded-2xl object-contain mx-auto shadow-2xl">
     </div>
+
+    <!-- Next Button -->
+    <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 text-white/80 hover:text-white flex items-center justify-center focus:outline-none transition duration-300 z-10" aria-label="次へ">
+      <i class="fa-solid fa-chevron-right text-lg"></i>
+    </button>
   </div>
 
 
@@ -828,548 +715,6 @@
   <!-- ========================================== -->
   <!-- INTERACTIVE JS LOGIC -->
   <!-- ========================================== -->
-  <script>
-    // ----------------------------------------------------
-    // CONSTANTS & CONFIGURATION
-    // ----------------------------------------------------
-    // GAS Webhook URL (Replace with your own Google Apps Script Webhook URL)
-    const SCRIPT_URL = 'YOUR_GAS_URL_HERE';
-    
-    // Custom Gate Password
-    const ACCESS_PASSWORD = 'Ei_Mahiro_1011';
-
-    // Ceremony Date: 2027-10-11
-    const CEREMONY_DATE = new Date('2027-10-11T14:00:00+09:00');
-    const RECEPTION_DATE = new Date('2027-10-11T13:30:00+09:00');
-    const BANQUET_END_DATE = new Date('2027-10-11T17:30:00+09:00');
-    
-    const EVENT_TITLE = '村上 瑛 & 横田 真潤 結婚披露宴';
-    const EVENT_LOCATION = 'ボタニカルハウス東京 (東京都渋谷区神南 1-2-3)';
-    const EVENT_DETAILS = '村上 瑛 & 横田 真潤 の結婚式・披露宴です。皆様のお越しを心よりお待ちしております。';
-
-
-    // ----------------------------------------------------
-    // 0. SECURITY PASSWORD GATE & INTRO FLOW
-    const lockScreen = document.getElementById('lock-screen');
-    const loaderScreen = document.getElementById('loader-screen');
-    const passwordInput = document.getElementById('password-input');
-    const passwordSubmit = document.getElementById('password-submit');
-    const passwordError = document.getElementById('password-error');
-    const passwordFormContainer = document.getElementById('password-form-container');
-
-    // Handle gate password verification
-    let introTimeouts = [];
-    let introSkipped = false;
-
-    // Helper function for typing effect
-    const typeWriter = (element, text, speed, callback) => {
-      let i = 0;
-      element.textContent = '';
-      element.classList.remove('opacity-0');
-      element.classList.add('opacity-100');
-      
-      const type = () => {
-        if (i < text.length) {
-          element.textContent += text.charAt(i);
-          i++;
-          introTimeouts.push(setTimeout(type, speed));
-        } else if (callback) {
-          callback();
-        }
-      };
-      type();
-    };
-
-    const startIntroAnimation = () => {
-      // Remove any inline transition styles so it pops in instantly and ensure it has bg-ivory
-      loaderScreen.style.transition = 'none';
-      loaderScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none', 'bg-transparent');
-      loaderScreen.classList.add('opacity-100', 'pointer-events-auto', 'bg-ivory');
-
-      const loaderBg = document.getElementById('loader-bg');
-      if (loaderBg) {
-        loaderBg.classList.add('opacity-100');
-        loaderBg.classList.remove('opacity-0', 'hidden');
-      }
-
-      const step1 = document.getElementById('intro-step1');
-      const typePart1 = document.getElementById('type-part1');
-      const typePart2 = document.getElementById('type-part2');
-      const heroContent = document.getElementById('hero-content');
-
-      // Make sure initial state of hero content is clean (no translate-y-24, no opacity-100)
-      heroContent.classList.remove('opacity-100', 'translate-y-24', 'translate-y-0');
-      heroContent.classList.add('opacity-0', 'translate-y-4');
-
-      // Show step1 container
-      step1.classList.remove('opacity-0', 'pointer-events-none');
-      step1.classList.add('opacity-100');
-
-      // Start typing Part 1: "The Beginning of"
-      typeWriter(typePart1, "The Beginning of", 50, () => {
-        // Once Part 1 is done typing, start Part 2: "Our Story"
-        typeWriter(typePart2, "Our Story", 75, () => {
-          // Once Part 2 is done typing, trigger Glint/Shine animation
-          typePart2.classList.add('shine-effect');
-
-          // Wait 1.5 seconds, then fade out Step 1
-          introTimeouts.push(setTimeout(() => {
-            step1.classList.remove('opacity-100');
-            step1.classList.add('opacity-0');
-            
-            // Step 2: Fade in "Wedding Invitation" text at normal position
-            introTimeouts.push(setTimeout(() => {
-              // Remove bg-ivory to make the loader screen transparent
-              loaderScreen.classList.remove('bg-ivory');
-              loaderScreen.classList.add('bg-transparent');
-
-              // Fade in the actual Hero text content ("Wedding Invitation" names, date) directly at its final position (translate-y-24)
-              heroContent.classList.remove('opacity-0', 'translate-y-4');
-              heroContent.classList.add('opacity-100', 'translate-y-24');
-
-              // After a short delay, fade out solid white loader background to slowly reveal background photo (Ken Burns)
-              introTimeouts.push(setTimeout(() => {
-                triggerMainReveal();
-                
-                // Cleanup: Completely hide loader and lock screen (3000ms after reveal)
-                introTimeouts.push(setTimeout(() => {
-                  lockScreen.classList.add('hidden');
-                  loaderScreen.classList.add('hidden');
-                  if (loaderBg) loaderBg.classList.add('hidden');
-                }, 3000));
-
-              }, 1800)); // Time to read the text before revealing the photo
-
-            }, 1000)); // Time between Step 1 fadeout and Step 2 text fadein
-
-          }, 1500)); // Time for Glint animation to display and be read
-
-        });
-      });
-    };
-
-    const triggerMainReveal = () => {
-      // Set transition explicitly before fading out to prevent quick flashes
-      loaderScreen.style.transition = 'opacity 1.2s ease-in-out';
-      
-      // Fade out loader screen
-      loaderScreen.classList.remove('opacity-100');
-      loaderScreen.classList.add('opacity-0', 'pointer-events-none');
-
-      // Fade out solid white loader background to reveal photos
-      const loaderBg = document.getElementById('loader-bg');
-      if (loaderBg) {
-        loaderBg.classList.replace('opacity-100', 'opacity-0');
-      }
-
-      // Trigger Ken Burns slow zoom-in on the active slide
-      const slide1 = document.getElementById('slide-1');
-      if (slide1) {
-        slide1.classList.add('kenburns-active');
-      }
-    };
-
-    const skipIntro = () => {
-      if (introSkipped) return;
-      introSkipped = true;
-
-      // Cancel all pending timeouts
-      introTimeouts.forEach(clearTimeout);
-      introTimeouts = [];
-
-      // Execute immediate transition
-      triggerMainReveal();
-
-      // Ensure hero content text is instantly visible and positioned down (translate-y-24)
-      const heroContent = document.getElementById('hero-content');
-      if (heroContent) {
-        heroContent.classList.remove('opacity-0', 'translate-y-4', 'translate-y-0');
-        heroContent.classList.add('opacity-100', 'translate-y-24');
-      }
-
-
-
-      // Immediately hide overlays
-      lockScreen.classList.add('hidden');
-      loaderScreen.classList.add('hidden');
-      loaderScreen.classList.remove('opacity-100');
-      loaderScreen.classList.add('opacity-0', 'pointer-events-none');
-
-      const loaderBg = document.getElementById('loader-bg');
-      if (loaderBg) {
-        loaderBg.classList.add('hidden');
-        loaderBg.classList.replace('opacity-100', 'opacity-0');
-      }
-    };
-
-    // Register click event on the entire loader screen to skip intro
-    loaderScreen.addEventListener('click', skipIntro);
-
-    const verifyPassword = () => {
-      const inputVal = passwordInput.value.trim();
-      
-      if (inputVal === ACCESS_PASSWORD) {
-        // Password correct -> Unlock and trigger intro flow
-        passwordError.classList.add('hidden');
-        
-        // Force scroll to top immediately
-        window.scrollTo(0, 0);
-
-        // Reset viewport zoom level dynamically
-        const viewport = document.querySelector('meta[name="viewport"]');
-        if (viewport) {
-          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-          setTimeout(() => {
-            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-          }, 300);
-        }
-        
-        // Remove transitions from loader-screen so it reveals instantly without flashing
-        loaderScreen.style.transition = 'none';
-        
-        lockScreen.classList.add('opacity-0', 'pointer-events-none');
-
-        // Start premium 4-stage intro animation
-        startIntroAnimation();
-
-      } else {
-        // Password incorrect -> Shake animation feedback
-        passwordError.classList.remove('hidden');
-        passwordFormContainer.classList.remove('animate-shake');
-        // Trigger reflow to restart animation
-        void passwordFormContainer.offsetWidth;
-        passwordFormContainer.classList.add('animate-shake');
-        passwordInput.value = '';
-        passwordInput.focus();
-      }
-    };
-
-    passwordSubmit.addEventListener('click', verifyPassword);
-    passwordInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') verifyPassword();
-    });
-
-    // Focus input on load
-    window.addEventListener('load', () => {
-      passwordInput.focus();
-    });
-
-
-    // ----------------------------------------------------
-    // 1. HERO SLIDESHOW CROSSFADE
-    // ----------------------------------------------------
-    let currentSlide = 1;
-    const totalSlides = 3;
-    
-    function changeSlideshow() {
-      const nextSlide = (currentSlide % totalSlides) + 1;
-      const currentEl = document.getElementById(`slide-${currentSlide}`);
-      const nextEl = document.getElementById(`slide-${nextSlide}`);
-      
-      currentEl.classList.replace('opacity-100', 'opacity-0');
-      currentEl.classList.remove('scale-105');
-      currentEl.classList.remove('kenburns-active');
-      
-      nextEl.classList.replace('opacity-0', 'opacity-100');
-      nextEl.classList.add('scale-105');
-      
-      currentSlide = nextSlide;
-    }
-    
-    setInterval(changeSlideshow, 5000);
-
-
-    // ----------------------------------------------------
-    // 2. COUNTDOWN TIMER
-    // ----------------------------------------------------
-    function updateCountdown() {
-      const now = new Date();
-      const difference = CEREMONY_DATE - now;
-
-      if (difference <= 0) {
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-        return;
-      }
-
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = String(d).padStart(2, '0');
-      document.getElementById('hours').textContent = String(h).padStart(2, '0');
-      document.getElementById('minutes').textContent = String(m).padStart(2, '0');
-      document.getElementById('seconds').textContent = String(s).padStart(2, '0');
-    }
-    
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-
-    // ----------------------------------------------------
-    // 3. NAVIGATION OVERLAY MENU
-    // ----------------------------------------------------
-    const menuTrigger = document.getElementById('menu-trigger');
-    const menuClose = document.getElementById('menu-close');
-    const menuOverlay = document.getElementById('menu-overlay');
-    const menuLinks = document.querySelectorAll('.menu-link');
-
-    const openMenu = (e) => {
-      e.preventDefault();
-      menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
-      menuOverlay.classList.add('opacity-100');
-    };
-
-    const closeMenu = (e) => {
-      if (e) e.preventDefault();
-      menuOverlay.classList.remove('opacity-100');
-      menuOverlay.classList.add('pointer-events-none', 'opacity-0');
-    };
-
-    menuTrigger.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
-
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-
-
-    // ----------------------------------------------------
-    // 4. SCROLL ANIMATIONS (Intersection Observer)
-    // ----------------------------------------------------
-    document.addEventListener('DOMContentLoaded', () => {
-      const reveals = document.querySelectorAll('.reveal');
-      
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -20px 0px'
-      });
-
-      reveals.forEach(el => revealObserver.observe(el));
-    });
-
-
-    // ----------------------------------------------------
-    // 5. CALENDAR INTEGRATION
-    // ----------------------------------------------------
-    function generateGoogleCalendarUrl() {
-      const formatToUtcString = (date) => {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-      };
-      const startStr = formatToUtcString(RECEPTION_DATE);
-      const endStr = formatToUtcString(BANQUET_END_DATE);
-      return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_TITLE)}&dates=${startStr}/${endStr}&details=${encodeURIComponent(EVENT_DETAILS)}&location=${encodeURIComponent(EVENT_LOCATION)}&sf=true&output=xml`;
-    }
-
-    document.getElementById('google-cal-btn').href = generateGoogleCalendarUrl();
-
-    document.getElementById('ics-cal-btn').addEventListener('click', () => {
-      const formatToIcalString = (date) => {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-      };
-      const startStr = formatToIcalString(RECEPTION_DATE);
-      const endStr = formatToIcalString(BANQUET_END_DATE);
-
-      const icsContent = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Ei Mahiro Wedding//Web Invitation//JA',
-        'BEGIN:VEVENT',
-        `UID:${Date.now()}@ei-mahiro-wedding`,
-        `DTSTART:${startStr}`,
-        `DTEND:${endStr}`,
-        `SUMMARY:${EVENT_TITLE}`,
-        `LOCATION:${EVENT_LOCATION}`,
-        `DESCRIPTION:${EVENT_DETAILS}`,
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'wedding_schedule.ics';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-
-
-    // ----------------------------------------------------
-    // 6. PHOTO GALLERY LIGHTBOX
-    // ----------------------------------------------------
-    const galleryGrid = document.getElementById('gallery-grid');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
-
-    galleryGrid.querySelectorAll('img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.classList.remove('pointer-events-none', 'opacity-0');
-        lightbox.classList.add('opacity-100');
-        document.body.classList.add('overflow-hidden');
-      });
-    });
-
-    const closeLightbox = () => {
-      lightbox.classList.remove('opacity-100');
-      lightbox.classList.add('pointer-events-none', 'opacity-0');
-      document.body.classList.remove('overflow-hidden');
-      setTimeout(() => { lightboxImg.src = ''; }, 300);
-    };
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || e.target.id === 'lightbox-img-parent') {
-        closeLightbox();
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-
-    // ----------------------------------------------------
-    // 7. RSVP FORM CONTROLS & SUBMISSION
-    // ----------------------------------------------------
-    const form = document.getElementById('rsvp-form');
-    const companionNo = document.getElementById('companion-no');
-    const companionYes = document.getElementById('companion-yes');
-    const companionContainer = document.getElementById('companion-count-container');
-
-    const allergyNo = document.getElementById('allergy-no');
-    const allergyYes = document.getElementById('allergy-yes');
-    const allergyContainer = document.getElementById('allergy-details-container');
-
-    const toggleCompanionVisibility = () => {
-      if (companionYes.checked) {
-        companionContainer.classList.remove('hidden');
-      } else {
-        companionContainer.classList.add('hidden');
-      }
-    };
-    companionNo.addEventListener('change', toggleCompanionVisibility);
-    companionYes.addEventListener('change', toggleCompanionVisibility);
-
-    const toggleAllergyVisibility = () => {
-      if (allergyYes.checked) {
-        allergyContainer.classList.remove('hidden');
-        document.getElementById('allergy-details').setAttribute('required', 'true');
-      } else {
-        allergyContainer.classList.add('hidden');
-        document.getElementById('allergy-details').removeAttribute('required');
-      }
-    };
-    allergyNo.addEventListener('change', toggleAllergyVisibility);
-    allergyYes.addEventListener('change', toggleAllergyVisibility);
-
-    const submitBtn = document.getElementById('submit-btn');
-    const submitText = document.getElementById('submit-text');
-    const submitSpinner = document.getElementById('submit-spinner');
-    
-    const successModal = document.getElementById('success-modal');
-    const successModalContent = document.getElementById('success-modal-content');
-    const successClose = document.getElementById('success-close');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      submitBtn.disabled = true;
-      submitSpinner.classList.remove('hidden');
-      submitText.textContent = '送信中...';
-
-      const attendance = document.querySelector('input[name="attendance"]:checked').value;
-      const guestName = document.getElementById('guest-name').value.trim();
-      const guestKana = document.getElementById('guest-kana').value.trim();
-      
-      const hasCompanion = document.querySelector('input[name="has_companion"]:checked').value;
-      const companionCount = (hasCompanion === 'あり') ? document.getElementById('companion-count').value : '0';
-      
-      const hasAllergy = document.querySelector('input[name="has_allergy"]:checked').value;
-      const allergyDetails = (hasAllergy === 'あり') ? document.getElementById('allergy-details').value.trim() : 'なし';
-      
-      const guestMessage = document.getElementById('guest-message').value.trim();
-
-      const payload = {
-        timestamp: new Date().toISOString(),
-        attendance,
-        name: guestName,
-        kana: guestKana,
-        companion: hasCompanion === 'あり' ? `${companionCount}名` : 'なし',
-        allergy: hasAllergy === 'あり' ? allergyDetails : 'なし',
-        message: guestMessage
-      };
-
-      console.log('Sending RSVP:', payload);
-      let submissionSuccess = false;
-
-      if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_GAS_URL_HERE') {
-        console.warn('GAS URL is mock. Simulating local submission...');
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        submissionSuccess = true;
-      } else {
-        try {
-          const response = await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-          });
-          
-          if (response.ok) {
-            submissionSuccess = true;
-          } else {
-            console.error('GAS Webhook failed:', response.status);
-            submissionSuccess = true;
-          }
-        } catch (error) {
-          console.error('Network Error posting RSVP:', error);
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          submissionSuccess = true; 
-        }
-      }
-
-      submitBtn.disabled = false;
-      submitSpinner.classList.add('hidden');
-      submitText.textContent = '回答を送信する';
-
-      if (submissionSuccess) {
-        successModal.classList.remove('pointer-events-none', 'opacity-0');
-        successModal.classList.add('opacity-100');
-        successModalContent.classList.remove('scale-95');
-        successModalContent.classList.add('scale-100');
-        document.body.classList.add('overflow-hidden');
-        
-        form.reset();
-        toggleCompanionVisibility();
-        toggleAllergyVisibility();
-      }
-    });
-
-    successClose.addEventListener('click', () => {
-      successModal.classList.remove('opacity-100');
-      successModal.classList.add('pointer-events-none', 'opacity-0');
-      successModalContent.classList.remove('scale-100');
-      successModalContent.classList.add('scale-95');
-      document.body.classList.remove('overflow-hidden');
-    });
-
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
