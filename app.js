@@ -86,29 +86,25 @@ const startIntroAnimation = () => {
         step1.classList.remove('opacity-100');
         step1.classList.add('opacity-0');
         
-        // Step 2: Fade in "Wedding Invitation" text at normal position
+        // Step 2: Fade out white background to show the photo first
         introTimeouts.push(setTimeout(() => {
           // Remove bg-ivory to make the loader screen transparent
           loaderScreen.classList.remove('bg-ivory');
           loaderScreen.classList.add('bg-transparent');
 
-          // Fade in the actual Hero text content ("Wedding Invitation" names, date) directly at its final position (translate-y-24)
+          // Trigger photo reveal immediately
+          triggerMainReveal();
+
+          // Position the Hero content text container down (translate-y-24) and make it active
           heroContent.classList.remove('opacity-0', 'translate-y-4');
           heroContent.classList.add('opacity-100', 'translate-y-24');
 
-          // After a short delay, fade out solid white loader background to slowly reveal background photo (Ken Burns)
+          // Cleanup: Completely hide loader and lock screen (6000ms after reveal)
           introTimeouts.push(setTimeout(() => {
-            triggerMainReveal();
-            
-            // Cleanup: Completely hide loader and lock screen (3000ms after reveal)
-            introTimeouts.push(setTimeout(() => {
-              lockScreen.classList.add('hidden');
-              loaderScreen.classList.add('hidden');
-              if (loaderBg) loaderBg.classList.add('hidden');
-            }, 3000));
-
-          }, 1800)); // Time to read the text before revealing the photo
-
+            lockScreen.classList.add('hidden');
+            loaderScreen.classList.add('hidden');
+            if (loaderBg) loaderBg.classList.add('hidden');
+          }, 6000));
         }, 1000)); // Time between Step 1 fadeout and Step 2 text fadein
 
       }, 1500)); // Time for Glint animation to display and be read
@@ -159,7 +155,7 @@ const skipIntro = () => {
   const heroContent = document.getElementById('hero-content');
   if (heroContent) {
     heroContent.classList.remove('opacity-0', 'translate-y-4', 'translate-y-0');
-    heroContent.classList.add('opacity-100', 'translate-y-24');
+    heroContent.classList.add('opacity-100', 'translate-y-24', 'instant-reveal');
   }
 
   // Immediately hide overlays
