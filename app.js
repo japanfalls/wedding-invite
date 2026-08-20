@@ -56,15 +56,15 @@ const startIntroAnimation = () => {
   // Trigger SVG drawing animation
   step1.classList.add('active-intro-svg');
 
-  // Trigger SMIL shine animation (iOS Safari compatible way) after 3.9s (Line 2 end)
+  // Trigger SMIL shine animation (iOS Safari compatible way) after 3.3s (Line 2 end)
   introTimeouts.push(setTimeout(() => {
     const animX1 = document.getElementById('shine-anim-x1');
     const animX2 = document.getElementById('shine-anim-x2');
     if (animX1) animX1.beginElement();
     if (animX2) animX2.beginElement();
-  }, 3900));
+  }, 3300));
 
-  // Wait for the SVG typing and shine to complete (5.6s total)
+  // Wait for the SVG typing and shine to complete (5.0s total)
   introTimeouts.push(setTimeout(() => {
     step1.classList.remove('opacity-100');
     step1.classList.add('opacity-0');
@@ -90,7 +90,7 @@ const startIntroAnimation = () => {
       }, 8000));
     }, 1500)); // Time between Step 1 fadeout and Step 2 text fadein
 
-  }, 5600));
+  }, 5000));
 };
 
 const triggerMainReveal = () => {

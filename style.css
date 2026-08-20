@@ -144,8 +144,8 @@ body {
 }
 
 .active-intro-svg #type-clip-rect-2 {
-  /* Line 2 typing: 2.4s starting at 1.5s (ends 3.9s) */
-  animation: typingLine2 2.4s steps(15, end) forwards 1.5s;
+  /* Line 2 typing: 2.4s starting at 0.9s (ends 3.3s) */
+  animation: typingLine2 2.4s steps(15, end) forwards 0.9s;
 }
 
 .active-intro-svg .story-text-2 {
