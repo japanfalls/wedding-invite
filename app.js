@@ -13,7 +13,7 @@ const RECEPTION_DATE = new Date('2027-10-11T13:30:00+09:00');
 const BANQUET_END_DATE = new Date('2027-10-11T17:30:00+09:00');
 
 const EVENT_TITLE = '村上 瑛 & 横田 真潤 結婚披露宴';
-const EVENT_LOCATION = 'ボタニカルハウス東京 (東京都渋谷区神南 1-2-3)';
+const EVENT_LOCATION = 'ララシャンスHIROSHIMA迎賓館 (広島県広島市南区西蟹屋3-18-2)';
 const EVENT_DETAILS = '村上 瑛 & 横田 真潤 の結婚式・披露宴です。皆様のお越しを心よりお待ちしております。';
 
 
@@ -30,25 +30,6 @@ const passwordFormContainer = document.getElementById('password-form-container')
 let introTimeouts = [];
 let introSkipped = false;
 
-// Helper function for typing effect
-const typeWriter = (element, text, speed, callback) => {
-  let i = 0;
-  element.textContent = '';
-  element.classList.remove('opacity-0');
-  element.classList.add('opacity-100');
-  
-  const type = () => {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      introTimeouts.push(setTimeout(type, speed));
-    } else if (callback) {
-      callback();
-    }
-  };
-  type();
-};
-
 const startIntroAnimation = () => {
   // Remove any inline transition styles so it pops in instantly and ensure it has bg-ivory
   loaderScreen.style.transition = 'none';
@@ -62,8 +43,6 @@ const startIntroAnimation = () => {
   }
 
   const step1 = document.getElementById('intro-step1');
-  const typePart1 = document.getElementById('type-part1');
-  const typePart2 = document.getElementById('type-part2');
   const heroContent = document.getElementById('hero-content');
 
   // Make sure initial state of hero content is clean (no translate-y-24, no opacity-100)
@@ -74,43 +53,36 @@ const startIntroAnimation = () => {
   step1.classList.remove('opacity-0', 'pointer-events-none');
   step1.classList.add('opacity-100');
 
-  // Start typing Part 1: "The Beginning of" (Slower typing speed)
-  typeWriter(typePart1, "The Beginning of", 75, () => {
-    // Once Part 1 is done typing, start Part 2: "Our Story" (Slower typing speed)
-    typeWriter(typePart2, "Our Story", 110, () => {
-      // Once Part 2 is done typing, trigger Glint/Shine animation
-      typePart2.classList.add('shine-effect');
+  // Trigger SVG drawing animation
+  step1.classList.add('active-intro-svg');
 
-      // Wait 2.2 seconds (longer glint pause), then fade out Step 1
+  // Wait for the SVG stroke drawing and fill to complete (e.g. 5.0 seconds total)
+  introTimeouts.push(setTimeout(() => {
+    step1.classList.remove('opacity-100');
+    step1.classList.add('opacity-0');
+    
+    // Step 2: Fade out white background to show the photo first
+    introTimeouts.push(setTimeout(() => {
+      // Remove bg-ivory to make the loader screen transparent
+      loaderScreen.classList.remove('bg-ivory');
+      loaderScreen.classList.add('bg-transparent');
+
+      // Trigger photo reveal immediately
+      triggerMainReveal();
+
+      // Position the Hero content text container down (translate-y-24) and make it active
+      heroContent.classList.remove('opacity-0', 'translate-y-4');
+      heroContent.classList.add('opacity-100', 'translate-y-24');
+
+      // Cleanup: Completely hide loader and lock screen (8000ms after reveal)
       introTimeouts.push(setTimeout(() => {
-        step1.classList.remove('opacity-100');
-        step1.classList.add('opacity-0');
-        
-        // Step 2: Fade out white background to show the photo first
-        introTimeouts.push(setTimeout(() => {
-          // Remove bg-ivory to make the loader screen transparent
-          loaderScreen.classList.remove('bg-ivory');
-          loaderScreen.classList.add('bg-transparent');
+        lockScreen.classList.add('hidden');
+        loaderScreen.classList.add('hidden');
+        if (loaderBg) loaderBg.classList.add('hidden');
+      }, 8000));
+    }, 1500)); // Time between Step 1 fadeout and Step 2 text fadein
 
-          // Trigger photo reveal immediately
-          triggerMainReveal();
-
-          // Position the Hero content text container down (translate-y-24) and make it active
-          heroContent.classList.remove('opacity-0', 'translate-y-4');
-          heroContent.classList.add('opacity-100', 'translate-y-24');
-
-          // Cleanup: Completely hide loader and lock screen (8000ms after reveal)
-          introTimeouts.push(setTimeout(() => {
-            lockScreen.classList.add('hidden');
-            loaderScreen.classList.add('hidden');
-            if (loaderBg) loaderBg.classList.add('hidden');
-          }, 8000));
-        }, 1500)); // Time between Step 1 fadeout and Step 2 text fadein
-
-      }, 2200)); // Time for Glint animation to display and be read
-
-    });
-  });
+  }, 7500));
 };
 
 const triggerMainReveal = () => {
@@ -185,14 +157,7 @@ const verifyPassword = () => {
     // Force scroll to top immediately
     window.scrollTo(0, 0);
 
-    // Reset viewport zoom level dynamically
-    const viewport = document.querySelector('meta[name="viewport"]');
-    if (viewport) {
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-      setTimeout(() => {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-      }, 300);
-    }
+
     
     // Remove transitions from loader-screen so it reveals instantly without flashing
     loaderScreen.style.transition = 'none';
@@ -219,10 +184,19 @@ passwordInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') verifyPassword();
 });
 
-// Focus input on load (or skip if already unlocked)
+// Focus input on load (or start intro if already unlocked)
 window.addEventListener('load', () => {
   if (localStorage.getItem('wedding_unlocked') === 'true') {
-    skipIntro();
+    // Hide lock screen instantly without fading
+    lockScreen.classList.add('hidden');
+    
+    // Force scroll to top immediately
+    window.scrollTo(0, 0);
+
+
+    
+    // Start premium 4-stage intro animation
+    startIntroAnimation();
   } else {
     passwordInput.focus();
   }
@@ -349,37 +323,6 @@ function generateGoogleCalendarUrl() {
 
 document.getElementById('google-cal-btn').href = generateGoogleCalendarUrl();
 
-document.getElementById('ics-cal-btn').addEventListener('click', () => {
-  const formatToIcalString = (date) => {
-    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-  };
-  const startStr = formatToIcalString(RECEPTION_DATE);
-  const endStr = formatToIcalString(BANQUET_END_DATE);
-
-  const icsContent = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Ei Mahiro Wedding//Web Invitation//JA',
-    'BEGIN:VEVENT',
-    `UID:${Date.now()}@ei-mahiro-wedding`,
-    `DTSTART:${startStr}`,
-    `DTEND:${endStr}`,
-    `SUMMARY:${EVENT_TITLE}`,
-    `LOCATION:${EVENT_LOCATION}`,
-    `DESCRIPTION:${EVENT_DETAILS}`,
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].join('\r\n');
-
-  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-  const link = document.createElement('a');
-  link.href = window.URL.createObjectURL(blob);
-  link.download = 'wedding_schedule.ics';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-});
-
 
 // ----------------------------------------------------
 // 6. PHOTO GALLERY LIGHTBOX
@@ -493,7 +436,7 @@ const toggleRsvpFields = () => {
   if (attendNo.checked) {
     companionWrapper.classList.add('hidden');
     allergyWrapper.classList.add('hidden');
-    guestMessage.placeholder = 'お祝いのメッセージなどをご自由にご記入ください（よろしければご欠席の理由なども添えていただけますと幸いです）';
+    guestMessage.placeholder = 'お祝いのメッセージなどをご自由にご記入ください';
     
     // Reset to default "No" to avoid sending companion/allergy data in background
     companionNo.checked = true;
