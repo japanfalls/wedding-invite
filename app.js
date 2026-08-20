@@ -2,7 +2,7 @@
 // CONSTANTS & CONFIGURATION
 // ----------------------------------------------------
 // GAS Webhook URL (Replace with your own Google Apps Script Webhook URL)
-const SCRIPT_URL = 'YOUR_GAS_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNofrat4bB-jjTouwRXzdaqWULAZBfwP8TO9PhPXjmTtLeu3-uPKNJQQcL5nO_9Sgv/exec';
 
 // Custom Gate Password
 const ACCESS_PASSWORD = 'Ei_Mahiro_1011';
