@@ -40,3 +40,10 @@ function doOptions(e) {
     .setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
     .setHeader("Access-Control-Allow-Headers", "Content-Type");
 }
+
+// GET接続用のフォールバック doGet 関数（CORSリダイレクト等でのエラーを防ぎます）
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({ "status": "success", "message": "GAS Web App is active." }))
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader("Access-Control-Allow-Origin", "*");
+}
