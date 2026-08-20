@@ -197,29 +197,29 @@
         <div class="w-full max-w-[320px] flex justify-center">
           <svg viewBox="0 0 320 160" class="w-full overflow-visible intro-story-svg" style="overflow: visible;">
             <defs>
-              <linearGradient id="gold-grad-text" x1="-100%" y1="0%" x2="0%" y2="0%">
-                <stop offset="0%" stop-color="#B8934A" />
-                <stop offset="25%" stop-color="#B8934A" />
+               <linearGradient id="gold-grad-text" x1="-100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#C5A880" />
+                <stop offset="25%" stop-color="#C5A880" />
                 <stop offset="50%" stop-color="#ffffff" />
-                <stop offset="75%" stop-color="#B8934A" />
-                <stop offset="100%" stop-color="#B8934A" />
+                <stop offset="75%" stop-color="#C5A880" />
+                <stop offset="100%" stop-color="#C5A880" />
                 <animate attributeName="x1" from="-100%" to="100%" dur="1.2s" begin="indefinite" fill="freeze" id="shine-anim-x1" />
                 <animate attributeName="x2" from="0%" to="200%" dur="1.2s" begin="indefinite" fill="freeze" id="shine-anim-x2" />
               </linearGradient>
               <clipPath id="type-clip">
                 <rect x="0" y="0" width="0" height="70" id="type-clip-rect" />
               </clipPath>
+              <clipPath id="type-clip-2">
+                <rect x="0" y="70" width="0" height="90" id="type-clip-rect-2" />
+              </clipPath>
             </defs>
             <!-- "The Beginning of" (increased spacing to y=45, solid charcoal, clipped) -->
             <text x="45" y="45" font-family="'Great Vibes', 'Allura', 'Alex Brush', cursive" font-size="22" fill="#2D322B" class="story-text-1" clip-path="url(#type-clip)">
               The Beginning of
             </text>
-            <!-- "Our Story" (increased spacing to y=135, configured for native SMIL stroke drawing) -->
-            <text x="45" y="135" font-family="'Great Vibes', 'Allura', 'Alex Brush', cursive" font-size="64" font-weight="600" fill="url(#gold-grad-text)" fill-opacity="0" stroke="url(#gold-grad-text)" stroke-width="1.8" stroke-dasharray="1600" stroke-dashoffset="1600" class="story-text-2">
+            <!-- "Our Story" (champagne gold, Brush Script calligraphy, clipped for typing) -->
+            <text x="45" y="135" font-family="'Brush Script MT', 'Great Vibes', 'Allura', cursive" font-size="64" font-weight="600" fill="url(#gold-grad-text)" class="story-text-2" clip-path="url(#type-clip-2)">
               Our Story
-              <animate attributeName="stroke-dashoffset" from="1600" to="0" dur="3.6s" begin="indefinite" fill="freeze" id="story-draw-offset" />
-              <animate attributeName="fill-opacity" from="0" to="1" dur="1.0s" begin="indefinite" fill="freeze" id="story-draw-fill" />
-              <animate attributeName="stroke-width" from="1.8" to="0" dur="1.0s" begin="indefinite" fill="freeze" id="story-draw-stroke" />
             </text>
           </svg>
         </div>

@@ -143,11 +143,21 @@ body {
   animation: typingLine1 1.8s steps(20, end) forwards 0.3s;
 }
 
+.active-intro-svg #type-clip-rect-2 {
+  /* Line 2 typing: 3.6s starting at 2.2s (ends 5.8s) */
+  animation: typingLine2 3.6s steps(15, end) forwards 2.2s;
+}
+
 .active-intro-svg .story-text-2 {
   opacity: 1;
 }
 
 @keyframes typingLine1 {
+  from { width: 0; }
+  to { width: 320px; }
+}
+
+@keyframes typingLine2 {
   from { width: 0; }
   to { width: 320px; }
 }
