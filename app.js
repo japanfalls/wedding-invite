@@ -56,15 +56,15 @@ const startIntroAnimation = () => {
   // Trigger SVG drawing animation
   step1.classList.add('active-intro-svg');
 
-  // Trigger SMIL shine animation (iOS Safari compatible way) after 5.8s
+  // Trigger SMIL shine animation (iOS Safari compatible way) after 3.9s (Line 2 end)
   introTimeouts.push(setTimeout(() => {
     const animX1 = document.getElementById('shine-anim-x1');
     const animX2 = document.getElementById('shine-anim-x2');
     if (animX1) animX1.beginElement();
     if (animX2) animX2.beginElement();
-  }, 5800));
+  }, 3900));
 
-  // Wait for the SVG stroke drawing and fill to complete (e.g. 5.0 seconds total)
+  // Wait for the SVG typing and shine to complete (5.6s total)
   introTimeouts.push(setTimeout(() => {
     step1.classList.remove('opacity-100');
     step1.classList.add('opacity-0');
@@ -90,7 +90,7 @@ const startIntroAnimation = () => {
       }, 8000));
     }, 1500)); // Time between Step 1 fadeout and Step 2 text fadein
 
-  }, 7500));
+  }, 5600));
 };
 
 const triggerMainReveal = () => {
@@ -134,7 +134,7 @@ const skipIntro = () => {
   // Ensure hero content text is instantly visible and positioned down (translate-y-24)
   const heroContent = document.getElementById('hero-content');
   if (heroContent) {
-    heroContent.style.transition = 'opacity 1.2s ease-in-out';
+    heroContent.style.transition = 'opacity 2.4s ease-in-out';
     heroContent.classList.remove('opacity-0', 'translate-y-4', 'translate-y-0');
     heroContent.classList.add('opacity-100', 'translate-y-24', 'instant-reveal');
   }
