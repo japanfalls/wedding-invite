@@ -56,6 +56,20 @@ const startIntroAnimation = () => {
   // Trigger SVG drawing animation
   step1.classList.add('active-intro-svg');
 
+  // Trigger SMIL handwriting offset drawing after 2.2s (Line 2 start)
+  introTimeouts.push(setTimeout(() => {
+    const drawOffset = document.getElementById('story-draw-offset');
+    if (drawOffset) drawOffset.beginElement();
+  }, 2200));
+
+  // Trigger SMIL handwriting fill-opacity fade-in / stroke-width fade-out after 4.8s
+  introTimeouts.push(setTimeout(() => {
+    const drawFill = document.getElementById('story-draw-fill');
+    const drawStroke = document.getElementById('story-draw-stroke');
+    if (drawFill) drawFill.beginElement();
+    if (drawStroke) drawStroke.beginElement();
+  }, 4800));
+
   // Trigger SMIL shine animation (iOS Safari compatible way) after 5.8s
   introTimeouts.push(setTimeout(() => {
     const animX1 = document.getElementById('shine-anim-x1');
