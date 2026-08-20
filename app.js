@@ -56,6 +56,14 @@ const startIntroAnimation = () => {
   // Trigger SVG drawing animation
   step1.classList.add('active-intro-svg');
 
+  // Trigger SMIL shine animation (iOS Safari compatible way) after 5.8s
+  introTimeouts.push(setTimeout(() => {
+    const animX1 = document.getElementById('shine-anim-x1');
+    const animX2 = document.getElementById('shine-anim-x2');
+    if (animX1) animX1.beginElement();
+    if (animX2) animX2.beginElement();
+  }, 5800));
+
   // Wait for the SVG stroke drawing and fill to complete (e.g. 5.0 seconds total)
   introTimeouts.push(setTimeout(() => {
     step1.classList.remove('opacity-100');

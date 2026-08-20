@@ -143,14 +143,19 @@ body {
   animation: typingLine1 1.8s steps(20, end) forwards 0.3s;
 }
 
+.intro-story-svg .story-text-2 {
+  /* Define static properties here to prevent Safari keyframe paint server bugs */
+  fill: url(#gold-grad-text);
+  fill-opacity: 0;
+  stroke: url(#gold-grad-text);
+  stroke-width: 1.8;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+}
+
 .active-intro-svg .story-text-2 {
   /* Line 2 handwriting drawing: 3.6s starting at 2.2s (ends 5.8s) */
   animation: handwritingOurStory 3.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 2.2s;
-}
-
-.active-intro-svg #gold-grad-text {
-  /* Gold shine animation sweeps left-to-right immediately after Line 2 finishes (5.8s, duration 1.2s) */
-  animation: goldShine 1.2s cubic-bezier(0.4, 0, 0.2, 1) both 5.8s;
 }
 
 @keyframes typingLine1 {
@@ -161,39 +166,22 @@ body {
 @keyframes handwritingOurStory {
   0% {
     opacity: 0;
-    stroke-dasharray: 1600;
     stroke-dashoffset: 1600;
-    fill: transparent;
     fill-opacity: 0;
-    stroke: url(#gold-grad-text);
     stroke-width: 1.8;
   }
   1% {
     opacity: 1;
   }
   70% {
-    fill: transparent;
     fill-opacity: 0;
-    stroke: url(#gold-grad-text);
     stroke-width: 1.8;
   }
   100% {
     opacity: 1;
     stroke-dashoffset: 0;
-    fill: url(#gold-grad-text);
     fill-opacity: 1;
     stroke-width: 0;
-  }
-}
-
-@keyframes goldShine {
-  0% {
-    x1: -100%;
-    x2: 0%;
-  }
-  100% {
-    x1: 100%;
-    x2: 200%;
   }
 }
 

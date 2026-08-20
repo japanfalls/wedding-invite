@@ -203,6 +203,8 @@
                 <stop offset="50%" stop-color="#ffffff" />
                 <stop offset="75%" stop-color="#B8934A" />
                 <stop offset="100%" stop-color="#B8934A" />
+                <animate attributeName="x1" from="-100%" to="100%" dur="1.2s" begin="indefinite" fill="freeze" id="shine-anim-x1" />
+                <animate attributeName="x2" from="0%" to="200%" dur="1.2s" begin="indefinite" fill="freeze" id="shine-anim-x2" />
               </linearGradient>
               <clipPath id="type-clip">
                 <rect x="0" y="0" width="0" height="70" id="type-clip-rect" />
@@ -212,8 +214,8 @@
             <text x="45" y="45" font-family="'Great Vibes', 'Allura', 'Alex Brush', cursive" font-size="22" fill="#2D322B" class="story-text-1" clip-path="url(#type-clip)">
               The Beginning of
             </text>
-            <!-- "Our Story" (increased spacing to y=135, configured for stroke-drawing to gold fill) -->
-            <text x="45" y="135" font-family="'Great Vibes', 'Allura', 'Alex Brush', cursive" font-size="64" font-weight="600" fill="none" stroke="url(#gold-grad-text)" stroke-width="1.8" class="story-text-2">
+            <!-- "Our Story" (increased spacing to y=135, styles defined dynamically in style.css) -->
+            <text x="45" y="135" font-family="'Great Vibes', 'Allura', 'Alex Brush', cursive" font-size="64" font-weight="600" class="story-text-2">
               Our Story
             </text>
           </svg>
